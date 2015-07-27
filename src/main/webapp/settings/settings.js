@@ -61,7 +61,8 @@ angular.module('jamstash.settings.controller', ['jamstash.settings.service', 'ja
         } else {
             $rootScope.hideQueue();
         }
-        persistence.saveSettings($scope.settings);
+        //persistence.saveSettings($scope.settings);
+        persistence.saveSettings(globals.settings);
         notifications.updateMessage('Settings Updated!', true);
         $scope.loadSettings();
         if (globals.settings.Server !== '' && globals.settings.Username !== '' && globals.settings.Password !== '') {
