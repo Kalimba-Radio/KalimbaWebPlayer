@@ -69,7 +69,6 @@ angular.module('jamstash.settings.service', [])
     this.Messages = [];
 
     this.BaseURL = function () { return this.settings.Server + '/rest'; };
-    alert(this.BaseURL);
     this.BaseParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=' + this.settings.Protocol + '&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName; };
     this.BaseJSONParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=json&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName; };
 })
