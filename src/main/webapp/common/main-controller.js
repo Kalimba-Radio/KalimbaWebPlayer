@@ -15,6 +15,7 @@ angular.module('JamStash')
     $scope.Page = Page;
     $rootScope.loggedIn = function () {
         if (globals.settings.Server !== '' && globals.settings.Username !== '' && globals.settings.Password !== '') {
+        	persistence.saveSettings($rootScope.settings);
             return true;
         } else {
             return false;
@@ -33,16 +34,18 @@ angular.module('JamStash')
         // Temporary Code to Convert Cookies added 2/2/2014
         if ($cookieStore.get('Settings')) {
             persistence.saveSettings($cookieStore.get('Settings'));
+            persistence.saveSettings($rootScope.getSettings());
             $cookieStore.remove('Settings');
         }
         var settings = persistence.getSettings();
         if (settings !== undefined) {
-            var updSettings = _(settings).omit('Url');
+            //var updSettings = _(settings).omit('Url');
             // We can't just assign settings to globals.settings because it's on the scope
             // TODO: Hyz: remove $rootScope.settings and replace with individual settings
-            _(updSettings).each(function(val, key) {
-                globals.settings[key] = val;
-            });
+            //_(updSettings).each(function(val, key) {
+            //    globals.settings[key] = val;
+        	persistence.saveSettings(globals.settings);
+           // });
         }
         if (utils.getValue("SavedCollections")) { globals.SavedCollections = utils.getValue("SavedCollections").split(","); }
         if (utils.getValue("DefaultCollection")) { globals.DefaultCollection = utils.getValue("DefaultCollection"); }

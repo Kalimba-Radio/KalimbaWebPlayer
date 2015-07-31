@@ -26,18 +26,18 @@
                 <span ng-attr-id="{{ 'msg_' + $index }}" class="message" ng-repeat="item in Messages track by $index" ng-bind-html="item"></span>
             </div>
             <div id="loading"></div>
-            <a id="jslogo" title="Jamstash" class="showQueue" href=""></a>
+            <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
             <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>
             <div id="globalactions">
                 <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue"><img src="images/arrow_right_gl_8x8.png" /></a>
             </div>
-            <div id="nav">
+           <!--   <div id="nav">
                 <ul class="tabs">
                     <li><a href="#/library" class="first" id="action_Library" title="Library" ng-class="{'active': isActive('/library')}"><img src="images/headphones_gd_16x14.png" /></a></li>
                     <li><a href="#/archive" id="action_Archive" class="" title="Archive.org - Live Music Archive" ng-class="{'active': isActive('/archive')}"><img src="images/archive_gd_16x16.png" /></a></li>
                     <li><a href="#/settings" id="action_Settings" class="last" title="Settings" ng-class="{'active': isActive('/settings')}"><img src="images/cog_16x16.png" /></a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
         <div id="content">
             <!-- Main -->
@@ -82,7 +82,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/jquery-ui /jquery-ui.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
     <script src="bower_components/jplayer/dist/jplayer/jquery.jplayer.js"></script>
     <script src="bower_components/fancybox/source/jquery.fancybox.js"></script>
     <script src="bower_components/notify.js/notify.js"></script>

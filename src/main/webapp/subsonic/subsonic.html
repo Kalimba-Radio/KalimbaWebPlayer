@@ -1,16 +1,16 @@
 <!-- Start: Library Tab -->
 <div id="tab1" class="tabcontent">
     <div id="tabLibrary">
-        <div class="actions floatleft">
+       <!--  <div class="actions floatleft">
             <a href="" class="button" id="action_RefreshArtists" title="Refresh List" ng-click="refreshArtists()"><img class="pad" src="images/reload_9x11.png" /></a>
             <a href="" class="button" id="action_RescanLibrary" title="Rescan Library" ng-click="rescanLibrary()"><img class="pad" src="images/loop_alt1_gd_12x9.png" /></a>
             <a href="" class="button" id="action_ToggleArtists" ng-click="toggleArtists()" title="Toggle Artists"><img src="images/arrow_right_gl_8x8.png" /></a>
-        </div>
-        <div id="search">
+        </div>-->
+       <!--   <div id="search">
             <input type="text" id="Search" name="Search" class="medium" title="Wildcards (*) supported" placeholder="Search..." ng-model="searching.query" ng-enter="search(searching.query, searching.typeId)"/>
             <select id="SearchType" name="SearchType" ng-model="searching.typeId" ng-options="o.id as o.name for o in searching.types"></select>
             <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
-        </div>
+        </div> -->
         <div class="subactions">
             <div class="floatleft" ng-show="selectedPlaylist !== null">
                 <label>Playlist Actions</label>
@@ -79,10 +79,16 @@
             </div>
         </div>
         <div id="left-component" class="smcolumn noselect" tabindex="0">
+        <div id="search">
+            <input type="text" id="Search" name="Search" class="medium" title="Wildcards (*) supported" placeholder="Search..." ng-model="searching.query" ng-enter="search(searching.query, searching.typeId)"/>
+            <select id="SearchType" name="SearchType" ng-model="searching.typeId" ng-options="o.id as o.name for o in searching.types"></select>
+            <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
+        </div>
+        <div style="height:50px">&nbsp;</div>
             <ul class="tablist">
                 <li class="" ng-click="toggleIndex()"><a href="">Artists</a></li>
                 <li class="" ng-click="togglePlaylist()"><a href="">Playlists</a></li>
-                <li class="" ng-click="togglePodcast()"><a href="">Podcasts</a></li>
+                <!-- <li class="" ng-click="togglePodcast()"><a href="">Podcasts</a></li>-->
             </ul>
             <div class="clear"></div>
             <div id="IndexContainer" class="leftsubsection" ng-show="showIndex">
