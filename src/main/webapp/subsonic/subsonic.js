@@ -26,34 +26,40 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
     $scope.AlbumSort = globals.AlbumSorts;
     $rootScope.showIndex = subsonic.showIndex;
     $scope.$watch("showIndex", function (newValue, oldValue) {
-        if (newValue !== oldValue) {
+        //if (newValue !== oldValue) {
             subsonic.showIndex = $rootScope.showIndex;
-        }
+       // }
     });
     $scope.toggleIndex = function () {
-        if ($rootScope.showIndex) {
+       /* if ($rootScope.showIndex) {
             $rootScope.showIndex = false;
         } else {
             $rootScope.showIndex = true;
             $scope.showPlaylist = false;
             $scope.showPodcast = false;
-        }
+        }*/
+    	$rootScope.showIndex = true;
+        $scope.showPlaylist = false;
+        $scope.showPodcast = false;
         $scope.saveDefaultSection('index');
     };
     $scope.showPlaylist = subsonic.showPlaylist;
     $scope.$watch("showPlaylist", function (newValue, oldValue) {
-        if (newValue !== oldValue) {
+       // if (newValue !== oldValue) {
             subsonic.showPlaylist = $scope.showPlaylist;
-        }
+       // }
     });
     $scope.togglePlaylist = function () {
-        if ($scope.showPlaylist) {
+       /* if ($scope.showPlaylist) {
             $scope.showPlaylist = false;
         } else {
             $scope.showPlaylist = true;
             $rootScope.showIndex = false;
             $scope.showPodcast = false;
-        }
+        }*/
+        $scope.showPlaylist = true;
+        $rootScope.showIndex = false;
+        $scope.showPodcast = false;
         $scope.saveDefaultSection('playlist');
     };
     $scope.showPodcast = subsonic.showPodcast;

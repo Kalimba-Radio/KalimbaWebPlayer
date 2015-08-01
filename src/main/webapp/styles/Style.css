@@ -229,8 +229,8 @@ span.apiversion
     float: left;
 	margin-left: -100%;
 	*/
-	border-right: 1px solid #ddd;
-    border-top: 1px solid #cbcbcb;
+	/*border-right: 1px solid #ddd;
+    border-top: 1px solid #cbcbcb;*/
 	position: fixed;
 	top: 40px;
 	left: 0;
@@ -347,7 +347,7 @@ span.apiversion
     margin: 0 5px;
 }
 .leftsubsection {
-    border-top: 1px solid #DDDDDD;
+   /* border-top: 1px solid #DDDDDD;*/
 }
 .loading
 {
@@ -474,7 +474,7 @@ ul.simplelist li
     font-size: 13px;
     cursor: pointer;
     padding: 6px 8px;
-    border-bottom: 1px solid #f2f2f2;
+   /* border-bottom: 1px solid #f2f2f2;*/
 }
 ul.simplelist .item .itemactions
 {
@@ -617,11 +617,11 @@ ul.tablist
 }
 ul.tablist li
 {
-    float: left;
-    background: #f8f8f8;
-    border-top: 1px solid #DDDDDD;
-    border-left: 1px solid #DDDDDD;
-    border-right: 1px solid #DDDDDD;
+   /* float: left;*/
+    background: #ffffff;
+    border-bottom: 1px solid #DDDDDD;
+   /* border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;*/
     font-size: 13px;
     font-weight: bold;
     margin: 0 3px 0 0;
@@ -636,7 +636,7 @@ ul.tablist li a
 }
 ul.tablist li a:hover
 {
-	color: #bbb;
+	color: #39b54a;
 }
 #BreadCrumb 
 {
@@ -1022,8 +1022,9 @@ ul.songlist li:hover
 }
 #AZIndex
 {
-    float: left;
+    float: none;
     margin: 0 5px 0 0;
+    text-align:center;
 }
 #AZIndex a
 {
@@ -1281,7 +1282,7 @@ ul.songlist li:hover
 }
 .audiojs .scrubber
 {
-    height: 4px;
+    height: 3px;
     margin: 20px 5px 0px 5px;
     float: none;
     width: auto;

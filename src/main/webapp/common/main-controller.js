@@ -254,6 +254,36 @@ angular.module('JamStash')
             player.play(next);
         }
     };
+    
+    /* ToDo
+     * 
+     * $rootScope.playFrom = function (index, songs) {
+        // TODO: Hyz: Replace
+    	if ($scope.selectedSongs.length = 0) {
+        var from = songs.slice(index,index+1);
+        $scope.selectedSongs = [];
+        angular.forEach(from, function (item, key) {
+            $scope.selectedSongs.push(item);
+            item.selected = true;
+        });
+    	}
+    	else if ($scope.selectedSongs.length > 0) {
+        	if(player.queue.length==0){
+        		player.queue = [];
+        		$rootScope.addSongsToQueue();
+        		var next = player.queue[0];
+        		player.play(next);
+        	}else{
+        		 angular.forEach($scope.selectedSongs, function (item, key) {
+                     player.queue.push(item);
+                     item.selected = false;
+                 });
+                 notifications.updateMessage($scope.selectedSongs.length + ' Song(s) Added to Queue', true);
+                 $scope.selectedSongs.length = 0;
+        	}
+        }
+    };
+     */
     $rootScope.addSongsToQueue = function () {
         // TODO: Hyz: Replace
         if ($scope.selectedSongs.length !== 0) {
