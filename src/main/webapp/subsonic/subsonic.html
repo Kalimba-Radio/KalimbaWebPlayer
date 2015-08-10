@@ -86,8 +86,8 @@
         </div>
         <div style="height:50px">&nbsp;</div>
             <ul class="tablist">
-                <li class="" ng-click="toggleIndex()"><a href="">Artists</a></li>
-                <li class="" ng-click="togglePlaylist()"><a href="">Playlists</a></li>
+                <li class=""  ng-class="{'selected': setIndexSelected }"  ng-click="toggleIndex()"><a href="">Artists</a></li>
+                <li class=""  ng-class="{'selected': setPlaylistSelected }" ng-click="togglePlaylist()"><a href="">Featured</a></li>
                 <!-- <li class="" ng-click="togglePodcast()"><a href="">Podcasts</a></li>-->
             </ul>
             <div class="clear"></div>
@@ -97,7 +97,7 @@
                     <a href="" ng-click="toggleAZ()" stop-event="click">A-Z</a>
                 </div>
                 <div class="clear"></div>
-                <ul id="AutoAlbumContainer" class="simplelist mainlist noselect">
+               <!--   <ul id="AutoAlbumContainer" class="simplelist mainlist noselect">
                     <li class="index" id="auto">Auto Albums</li>
                     <li class="item" ng-repeat="o in AutoAlbums" id="{{o.id}}" ng-click="getAlbumListBy(o.id)" ng-class="{'selected': selectedAutoAlbum == o.id }">
                         <span>{{o.name}}</span>
@@ -106,7 +106,7 @@
                             <a href="" class="nextprev hover" id="random" title="Next" ng-click="getAlbumListBy(o.id, 'next')" stop-event="click">&rsaquo;</a>
                         </div>
                     </li>
-                </ul>
+                </ul>-->
                 <!-- Shortcut -->
                 <ul class="simplelist mainlist noselect" ng-show="shortcut.length">
                     <li class="index" title="Scroll to Top" data-bind="click: $root.scrollToTop"><a>Shortcuts</a></li>
@@ -172,7 +172,19 @@
                         <div class="title" title="{{'Songs: ' + o.songCount + ', Public: ' + o.public}}">{{o.name}}</div>
                     </li>
                 </ul>-->
-                <ul class="simplelist mainlist noselect">
+                
+                <ul id="AutoAlbumContainer" class="simplelist mainlist noselect">
+                    <li class="index" id="auto">Auto Albums</li>
+                    <li class="item" ng-repeat="o in AutoAlbums" id="{{o.id}}" ng-click="getAlbumListBy(o.id)" ng-class="{'selected': selectedAutoAlbum == o.id }">
+                        <span>{{o.name}}</span>
+                        <div class="floatright">
+                            <a href="" class="nextprev hover" id="random" title="Previous" ng-click="getAlbumListBy(o.id, 'prev')" stop-event="click">&lsaquo;</a>
+                            <a href="" class="nextprev hover" id="random" title="Next" ng-click="getAlbumListBy(o.id, 'next')" stop-event="click">&rsaquo;</a>
+                        </div>
+                    </li>
+                </ul>
+                
+               <!--  <ul class="simplelist mainlist noselect">
                     <li class="index" id="auto">Playlists</li>
                     <li class="item" ng-repeat="o in playlistsPublic" ng-click="getPlaylist('display', o.id)" ng-class="{'selected': o.id == selectedPlaylist}">
                         <div class="itemactions">
@@ -181,7 +193,7 @@
                         </div>
                         <div class="title" title="{{'Owner: ' + o.owner + ' Songs: ' + o.songCount}}">{{o.name}}</div>
                     </li>
-                </ul>
+                </ul>-->
             </div>
             <!-- Podcasts -->
             <div id="PodcastContainer" class="leftsubsection" ng-show="showPodcast">

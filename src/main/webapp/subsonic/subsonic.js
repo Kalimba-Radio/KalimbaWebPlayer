@@ -16,7 +16,7 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
     $scope.playlistMenu = [];
     $scope.AutoAlbums = [
         { id: "random", name: "Random" },
-        { id: "newest", name: "Recently Added" },
+        { id: "newest", name: "Latest" },
         { id: "starred", name: "Starred" },
         { id: "highest", name: "Top Rated" },
         { id: "frequent", name: "Most Played" },
@@ -42,6 +42,9 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
         $scope.showPlaylist = false;
         $scope.showPodcast = false;
         $scope.saveDefaultSection('index');
+        $scope.setIndexSelected=true;
+        $scope.setPlaylistSelected=false;
+        	
     };
     $scope.showPlaylist = subsonic.showPlaylist;
     $scope.$watch("showPlaylist", function (newValue, oldValue) {
@@ -61,6 +64,8 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
         $rootScope.showIndex = false;
         $scope.showPodcast = false;
         $scope.saveDefaultSection('playlist');
+        $scope.setIndexSelected=false;
+        $scope.setPlaylistSelected=true;
     };
     $scope.showPodcast = subsonic.showPodcast;
     $scope.$watch("showPodcast", function (newValue, oldValue) {
@@ -646,6 +651,7 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
     $scope.getPodcasts();
     $scope.openDefaultSection();
     $scope.getMusicFolders();
+    $scope.getAlbumListBy('newest');
     if ($routeParams.artistId && $routeParams.albumId) {
         $scope.getAlbumByTag($routeParams.albumId);
     } else if ($routeParams.artistId) {

@@ -638,6 +638,11 @@ ul.tablist li a:hover
 {
 	color: #39b54a;
 }
+
+ul.tablist li.selected a
+{
+	color: #39b54a;
+}
 #BreadCrumb 
 {
     float: left;

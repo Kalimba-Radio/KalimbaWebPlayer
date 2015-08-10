@@ -10,7 +10,7 @@ angular.module('JamStash')
     $rootScope.Genres = [];
     $rootScope.Messages = [];
 
-    $rootScope.SelectedMusicFolder = "";
+    $rootScope.SelectedMusicFolder = "newest";
     $rootScope.unity = null;
     $scope.Page = Page;
     $rootScope.loggedIn = function () {
