@@ -5,7 +5,7 @@
 * Also offers more fine-grained functionality that is not part of Subsonic's API.
 */
 angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
-    'jamstash.settings.service', 'jamstash.utils', 'jamstash.model', 'jamstash.notifications', 'jamstash.player.service'])
+    'jamstash.settings.service', 'jamstash.utils', 'jamstash.model', 'jamstash.notifications', 'jamstash.player.service','ngCart'])
 
 .factory('subsonic', ['$rootScope', '$http', '$q', 'globals', 'utils', 'map', 'notifications', 'player',
     function ($rootScope, $http, $q, globals, utils, map, notifications, player) {

@@ -26,9 +26,15 @@
                 <span ng-attr-id="{{ 'msg_' + $index }}" class="message" ng-repeat="item in Messages track by $index" ng-bind-html="item"></span>
             </div>
             <div id="loading"></div>
-            <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
-            <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>
+              <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
+    
+            <!-- <a id="," target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a> -->
+            <div class="floatleft">
+            <ngcart-cart></ngcart-cart>
+            <ngcart-summary></ngcart-summary>
+            </div>
             <div id="globalactions">
+            
                 <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue"><img src="images/arrow_right_gl_8x8.png" /></a>
             </div>
            <!--   <div id="nav">
@@ -91,8 +97,9 @@
     <script src="bower_components/angular-underscore/angular-underscore.js"></script>
     <script src="bower_components/angular-locker/dist/angular-locker.min.js"></script>
     <script src="bower_components/angular-ui-utils/keypress.js"></script>
+    <script src="bower_components/ngcart/dist/ngCart.js"></script>
     <!-- endbower -->
-    <script src="/vendor/jquery.base64.js"></script>
+    <script src="vendor/jquery.base64.js"></script>
     <script src="vendor/jquery.dateFormat-1.0.js"></script>
     <!-- endbuild -->
     <!-- our scripts -->
