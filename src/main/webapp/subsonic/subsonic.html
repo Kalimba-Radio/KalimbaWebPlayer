@@ -34,9 +34,9 @@
             <div id="right-component" class="lgcolumn" ng-class="{'lgcolumn_expanded' : !$rootScope.settings.ShowQueue}">
                 <ul class="actionlist">
                     <li>
-                        <form class="form">
+                       <!--  <form class="form">-->
                             <select id="SelectedAlbumSort" ng-model="SelectedAlbumSort.id" ng-show="AlbumSort.length" ng-options="o.id as o.name for o in AlbumSort"></select>
-                        </form>
+                      <!--   </form>-->
                         <div id="BreadCrumb">
                             <div id="BreadCrumbs" class="floatleft">
                                 <div class="crumb"><a ng-click="toggleArtists()" title="Toggle Artists">Artists</a> &gt;</div>
@@ -84,6 +84,7 @@
             <select id="SearchType" name="SearchType" ng-model="searching.typeId" ng-options="o.id as o.name for o in searching.types"></select>
             <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
         </div>
+        <div id="userImg">	</div>
         <div style="height:50px">&nbsp;</div>
             <ul class="tablist">
                 <li class=""  ng-class="{'selected': setIndexSelected }"  ng-click="toggleIndex()"><a href="">Artists</a></li>
@@ -218,6 +219,16 @@
             </ul>
         </div>
     </div>
+    <div class="social_login">
+			<div class="">
+				<fb:login-button v="2"
+					scope="public_profile,email,user_birthday,user_hometown,user_location,user_relationships"
+					size="xlarge" onlogin="checkLoginState('A');">Login with Facebook</fb:login-button>
+				<br />
+				<!-- 	<div id="gSignInWrapper">
+  <div id="myButton" class="classesToStyleWith">
+  </div> -->
+
 <div class="clear"></div>
 </div>
 <!-- End: Library Tab -->

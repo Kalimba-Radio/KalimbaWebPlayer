@@ -437,7 +437,28 @@ angular.module('JamStash')
     $scope.toTrusted = function (html) {
         return $sce.trustAsHtml(html);
     };
-
+    
+    //save users
+    
+    function saveUser (response) {
+    	globals.user.name = response.name;
+		alert(globals.user.name);
+		globals.user.email = response.email;
+		globals.user.firstName = response.first_name;
+		globals.user.lastName = response.last_name;
+		globals.user.gender = response.gender;
+		globals.user.birthday =response.birthday;
+		globals.user.location = response.location ? response.location.name
+				: '';
+		globals.user.hometown = response.hometown ? response.hometown.name
+				: '';
+		//document.forms[0].bio.value = response.bio;
+		globals.user.relationship = response.relationship_status;
+		globals.user.timezone = response.timezone;
+		globals.user.userType = userType;
+		globals.user.providerId = "1";
+    };
+    
     /* Launch on Startup */
     $scope.loadSettings();
     utils.switchTheme(globals.settings.Theme);

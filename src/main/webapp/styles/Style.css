@@ -157,16 +157,16 @@ span.apiversion
 #jslogo
 {
     position: absolute;
-    top: 6px;
+    top: 1px;
     left: 12px;
-    width: 197px;
-    height: 50px;
-    background: url('../images/kalimba_logo120x32.png') no-repeat 0 0;   
+    width: 135px;
+    height: 40px;
+    background: url('../images/kalimba_logo-small.png') no-repeat 0 0;   
     cursor: pointer;
 }
 #jslogo:hover
 {
-    background: url('../images/kalimba_logo120x32.png') no-repeat 0 1px;    
+    background: url('../images/kalimba_logo-small.png') no-repeat 0 1px;    
 }
 .pagetabcenter
 {
