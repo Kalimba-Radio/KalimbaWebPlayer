@@ -18,6 +18,48 @@
     <link href="styles/Style.css" rel="stylesheet" type="text/css" data-name="main" />
     <link href="styles/Mobile.css" rel="stylesheet" type="text/css" data-name="main" />
     <link href="" rel="stylesheet" type="text/css" data-name="theme" />
+    <style>
+    .tiptext {
+    background:#ccc;
+    border: 1px #333;
+    padding:5px;
+    width:60px;
+}
+.description {
+    display:none;
+    position:absolute;
+    border:1px solid #000;
+    width:400px;
+    height:400px;
+}
+
+.overlay {
+     visibility: hidden;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+}
+
+
+
+
+
+
+
+
+
+</style>
+    <script>
+    $(".tiptext").mouseover(function() {
+        $(this).children(".description").show();
+    }).mouseout(function() {
+        $(this).children(".description").hide();
+    });
+</script>
 </head>
 <body ui-keypress="{'32 179': 'togglePause($event)', '43 61 187': 'turnVolumeUp($event)', '45 95 189': 'turnVolumeDown($event)'}" ui-keydown="{'right 176': 'nextTrack($event)', 'left 177': 'previousTrack($event)'}">
     <div id="container">
@@ -26,17 +68,21 @@
                 <span ng-attr-id="{{ 'msg_' + $index }}" class="message" ng-repeat="item in Messages track by $index" ng-bind-html="item"></span>
             </div>
             <div id="loading"></div>
-              <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
+           
+              <!-- <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a> -->
     
             <!-- <a id="," target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a> -->
-            <div class="floatleft">
-            <ngcart-cart></ngcart-cart>
-            <ngcart-summary></ngcart-summary>
-            </div>
-            <div id="globalactions">
+         
             
-                <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue"><img src="images/arrow_right_gl_8x8.png" /></a>
-            </div>
+          <div align="center" class="tiptext">
+         <div class="description" id="overlay">
+         <ngcart-cart></ngcart-cart> 
+         </div>
+             <ngcart-summary></ngcart-summary>             
+       	
+         </div>
+        
+           
            <!--   <div id="nav">
                 <ul class="tabs">
                     <li><a href="#/library" class="first" id="action_Library" title="Library" ng-class="{'active': isActive('/library')}"><img src="images/headphones_gd_16x14.png" /></a></li>

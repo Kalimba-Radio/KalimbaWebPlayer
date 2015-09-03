@@ -84,6 +84,9 @@
             <select id="SearchType" name="SearchType" ng-model="searching.typeId" ng-options="o.id as o.name for o in searching.types"></select>
             <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
         </div>
+         <div class="description">
+         <ngcart-cart></ngcart-cart> 
+         </div>
         <div style="height:50px">&nbsp;</div>
             <ul class="tablist">
                 <li class="" ng-click="toggleIndex()"><a href="">Artists</a></li>
