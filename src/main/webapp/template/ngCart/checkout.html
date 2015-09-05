@@ -1,21 +1,4 @@
-<head>
 
-
-<script language="javascript" type="text/javascript">
-
-function popitup(url) {
-	newwindow=window.open(url,'name','height=200,width=150');
-	if (window.focus) {newwindow.focus()}
-	return false;
-}
-
-
-</script>
-
-  
-
-</script>
-</head>
 <div ng-if="service=='http' || service == 'log'">
 
     <button class="btn btn-primary" ng-click="checkout()" onClick="" ng-disabled="!ngCart.getTotalItems()" ng-transclude style="width:104px;height: 40px;">checkout</button>

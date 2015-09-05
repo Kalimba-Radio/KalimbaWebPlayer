@@ -23,14 +23,22 @@
     background:#ccc;
     border: 1px #333;
     padding:5px;
-    width:60px;
+    width:100px;
+    color: #222;
+    left: 900px;
 }
 .description {
-    display:none;
+   margin-top:36px;
+      
+     display:none; 
     position:absolute;
     border:1px solid #000;
-    width:400px;
-    height:400px;
+    width:300px;
+    height:auto;
+    z-index: 1;
+    background-color:#6495ED;
+    margin-left:200;
+   
 }
 
 .overlay {
@@ -42,19 +50,26 @@
      height:100%;
      text-align:center;
      z-index: 1000;
+     display:none;
 }
 
-
-
-
-
-
-
-
+.boxshadow 
+{
+  -moz-box-shadow: 3px 3px 5px #535353;
+  -webkit-box-shadow: 3px 3px 5px #535353;       
+  box-shadow: 3px 3px 5px #535353;
+}
+.roundbox
+{  
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px;  
+  border-radius: 6px 6px 6px 6px;
+}
 
 </style>
     <script>
     $(".tiptext").mouseover(function() {
+    	 autoOpen: false;
         $(this).children(".description").show();
     }).mouseout(function() {
         $(this).children(".description").hide();
@@ -74,9 +89,10 @@
             <!-- <a id="," target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a> -->
          
             
-          <div align="center" class="tiptext">
-         <div class="description" id="overlay">
-         <ngcart-cart></ngcart-cart> 
+          <div align="center" class="tiptext cartstyle" style="">
+         <div class="description boxshadow roundbox" id="overlay">
+         <ngcart-cart></ngcart-cart>
+         <ngcart-checkout service="http" settings="{ url:'#/checkout' }">Checkout</ngcart-checkout> 
          </div>
              <ngcart-summary></ngcart-summary>             
        	

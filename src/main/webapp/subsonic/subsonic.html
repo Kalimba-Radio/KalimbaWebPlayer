@@ -12,18 +12,18 @@
             <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
         </div> -->
         <div class="subactions">
-            <div class="floatleft" ng-show="selectedPlaylist !== null">
+            <!-- <div class="floatleft" ng-show="selectedPlaylist !== null">
                 <label>Playlist Actions</label>
                 <a href="" class="button" id="action_DeletePlaylist" title="Delete Selected Playlist" ng-click="deletePlaylist()">Delete</a>
                 <a href="" class="button" id="action_SavePlaylist" title="Save Playlist" ng-click="savePlaylist()">Save</a>
                 <a href="" class="button" id="action_RemoveSongs" title="Remove selected song(s) from playlist" ng-click="songsRemoveSelected()">Remove Song(s)</a>
                 |&nbsp;
-            </div>
-            <a href="" class="button" id="action_PlayAlbum" title="Play Album" ng-click="playAll()"><img src="images/play_gl_6x8.png"></a>
+            </div> -->
+           <!--  <a href="" class="button" id="action_PlayAlbum" title="Play Album" ng-click="playAll()"><img src="images/play_gl_6x8.png"></a>
             <a href="" class="button" id="action_SelectAll" title="Select All" ng-click="selectAll()">All</a>
             <a href="" class="button" id="action_SelectNone" title="Select None" ng-click="selectNone()">None</a>
             <a href="" class="button" id="action_AddToQueue" title="Add To Queue" ng-click="addSongsToQueue()">+ Queue</a>
-            <a href="" class="button" id="action_AddToPlaylist" title="Add Selected To Playlist" ng-click="loadPlaylistsForMenu()">+ Playlist</a>
+            <a href="" class="button" id="action_AddToPlaylist" title="Add Selected To Playlist" ng-click="loadPlaylistsForMenu()">+ Playlist</a> -->
             <div id="submenu_AddToPlaylist" class="submenu shadow" style="display: none;">
                 <a href="" ng-repeat="o in playlistMenu" ng-click="addToPlaylist(o.id)">{{o.name}}</a>
             </div>
@@ -84,9 +84,7 @@
             <select id="SearchType" name="SearchType" ng-model="searching.typeId" ng-options="o.id as o.name for o in searching.types"></select>
             <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
         </div>
-         <div class="description">
-         <ngcart-cart></ngcart-cart> 
-         </div>
+         
         <div style="height:50px">&nbsp;</div>
             <ul class="tablist">
                 <li class="" ng-click="toggleIndex()"><a href="">Artists</a></li>
