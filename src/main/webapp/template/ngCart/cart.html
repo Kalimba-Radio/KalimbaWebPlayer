@@ -5,7 +5,7 @@
 
 <div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0" id="template/ngCart/addtocart.html">
 
-    <table class="table table-striped ngCart cart">
+    <table class="table table-striped ngCart cart" >
 
         <thead>
         <tr>
@@ -43,7 +43,8 @@
         </tfoot>
         <tbody>
         <tr ng-repeat="item in ngCart.getCart().items track by $index">
-            <td><span ng-click="ngCart.removeItemById(item.getId())" class="glyphicon glyphicon-remove">R</span></td>
+            <td><span ng-click="ngCart.removeItemById(item.getId())" class="glyphicon glyphicon-remove">
+            <img src="images/delete.png" /></span></td>
 
             <td>{{ item.getName() }}</td>
             <td><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
