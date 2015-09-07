@@ -18,7 +18,7 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
         { id: "random", name: "Random" },
         { id: "newest", name: "Latest" },
         { id: "starred", name: "Starred" },
-        { id: "highest", name: "Top Rated" },
+        /*{ id: "highest", name: "Top Rated" },*/
         { id: "frequent", name: "Most Played" },
         { id: "recent", name: "Recently Played" }
     ];
@@ -118,7 +118,9 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
             }
         }
     };
-    var sortSubsonicSongs = function (newValue) {
+    
+   // var sortSubsonicSongs = function (newValue) {
+     $scope.sortSubsonicSongs = function (newValue){
         if (typeof newValue != 'undefined') {
             //alert(content.song.length);
             switch (newValue) {

@@ -28,7 +28,10 @@
             </div>
             <div id="loading"></div>
             <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
-            <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>
+            <!-- <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>-->
+            
+            <fb:login-button id="sslogo" size="medium" onlogin="checkLoginState('A');">
+            <a id="ssname" href=""></a>
             <div id="globalactions">
                 <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue"><img src="images/arrow_right_gl_8x8.png" /></a>
             </div>
@@ -150,26 +153,30 @@
     					//if (sessionMail != "") {
     						FB
     								.api(
-    										"/me/picture?width=50&height=50",
+    										"/me/picture?width=55&height=55",
     										function(response) {
 
     											console.log("url"+response.data.url);
 
     											
     												document
-    														.getElementById('userImg').style.display = "block";
+    														.getElementById('sslogo').style.display = "block";
     												document
-    														.getElementById('userImg').innerHTML = "<img src="+response.data.url +">";
+    														.getElementById('sslogo').innerHTML = "<img style='webkit-border-radius: 55; -moz-border-radius: 55;  border-radius: 55px;' src="+response.data.url +">";
     											
+    												//document.getElementById('ssname').style.display = "block";
+    												//document.getElementById('ssname').innerHTML = {{user.name}};
+    														
     											console.log("the end");
 
     											//document.forms[0].action="/U";
 
     										});
-    				//	}
+    				
     					if (response.status === 'connected') {
     						// Logged into your app and Facebook.
-
+							//document.getElementById('ssname').style.display = "block";
+    						//document.getElementById('ssname').innerHTML = response.name;
     						//	callServlet();
 
     						/* if(sessionMail==""){
@@ -184,7 +191,28 @@
     					}
 
     				});
+    		
+    		 FB
+    			.api(
+    					'/me',
+    					function(response) {
+
+    						//console.log(response.data.url);
+
+    						
+    						document.getElementById('ssname').style.display = "block";
+    						document.getElementById('ssname').innerHTML = response.name;
+    						
+    						console.log("the end");
+
+    						//document.forms[0].action="/U";
+
+    					});  
+    		
+    		
     	};
+    	
+    	
 
     	// Load the SDK asynchronously
     	(function(d, s, id) {
@@ -204,28 +232,25 @@
 
     		console.log('Welcome!  Fetching your information.... ');
 
-    		/* FB
-    				.api(
-    						"/me/picture?width=50&height=50",
-    						function(response) {
+    		FB
+			.api(
+					"/me/picture?width=55&height=55",
+					function(response) {
 
-    							console.log(response.data.url);
+						console.log("url"+response.data.url);
 
-    							
-    							document.forms[0].userType.value = userType;
-    							if (userType == 'A') {
-    								document.getElementById('dialog-link').style.display = "block";
-    								document.getElementById('dialog-link').innerHTML = "<img src="+response.data.url +">";
-    							} else {
-    								document.getElementById('dialog-link-user').style.display = "block";
-    								document.getElementById('dialog-link-user').innerHTML = "<img src="+response.data.url +">";
-    							}
+						
+							document
+									.getElementById('sslogo').style.display = "block";
+							document
+									.getElementById('sslogo').innerHTML = "<img style ='webkit-border-radius: 55; -moz-border-radius: 55;  border-radius: 55px;' src="+response.data.url +">";
+						
+							
+						console.log("the end");
 
-    							console.log("the end");
+						//document.forms[0].action="/U";
 
-    							//document.forms[0].action="/U";
-
-    						}); */
+					});
 
     		FB
     				.api(
@@ -235,7 +260,7 @@
     							//		+ response.name);
     							console.log('Successful login for: '
     									+ JSON.stringify(response));
-    							alert(JSON.stringify(response));
+    							//alert(JSON.stringify(response));
     							// document.getElementById('status').innerHTML =
     							//   'Thanks for logging in, ' + response.name + '!';
 
@@ -243,8 +268,11 @@
     							//alert(document.forms[0].getElementById("name").value);
     							//alert(document.getElementById("name").value);
     							//alert(response.name);
+    							document.getElementById('ssname').style.display = "block";
+								document.getElementById('ssname').innerHTML = response.name;
+								
     							document.forms[0].name.value = response.name;
-    							alert(document.forms[0].name.value);
+    							//alert(document.forms[0].name.value);
     							document.forms[0].email.value = response.email;
     							document.forms[0].first_name.value = response.first_name;
     							document.forms[0].last_name.value = response.last_name;
@@ -261,8 +289,12 @@
     							document.forms[0].userType.value = userType;
     							document.forms[0].providerId.value = "1";
     							document.forms[0].sessionEmail.value=response.email;
-    							response.id;
+    							//response.id;
     							
+    							var scope = angular.element(document.getElementById("loginElement")).scope();
+    						    scope.$apply(function () {
+    						    scope.saveUser(response);
+    						    });
     							//saveUser(response);
     							//alert(document.forms[0].location.value);
     							//alert(document.forms[0].hometown.value);

@@ -440,9 +440,9 @@ angular.module('JamStash')
     
     //save users
     
-    function saveUser (response) {
+    $scope.saveUser=function (response) {
     	globals.user.name = response.name;
-		alert(globals.user.name);
+		//alert(globals.user.name);
 		globals.user.email = response.email;
 		globals.user.firstName = response.first_name;
 		globals.user.lastName = response.last_name;
@@ -455,7 +455,7 @@ angular.module('JamStash')
 		//document.forms[0].bio.value = response.bio;
 		globals.user.relationship = response.relationship_status;
 		globals.user.timezone = response.timezone;
-		globals.user.userType = userType;
+		globals.user.userType = 'A';
 		globals.user.providerId = "1";
     };
     

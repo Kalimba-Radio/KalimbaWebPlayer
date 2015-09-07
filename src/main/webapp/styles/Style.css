@@ -157,7 +157,7 @@ span.apiversion
 #jslogo
 {
     position: absolute;
-    top: 1px;
+    top: 15px;
     left: 12px;
     width: 135px;
     height: 40px;
@@ -176,7 +176,7 @@ span.apiversion
     right: 0;
     margin: 0 auto;
     width: 66px;
-    height: 22px;
+    height: 80px;
     background: url('../images/favicon_32x32.png') no-repeat center center #f9f9f9;
     border-top: 1px solid #C3C3C3;
     border-right: 1px solid #C3C3C3;
@@ -189,25 +189,37 @@ span.apiversion
     height: 20px;
     opacity: .8;
 }
+#ssname
+{
+    position: absolute;
+    top: 15px;
+    right: 70px;
+    width: 54px;
+    height: 80px;
+    border-radius: 32px;
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
+    cursor: pointer;
+}
 #sslogo
 {
     position: absolute;
-    top: -1px;
-    right: 7px;
-    width: 54px;
-    height: 36px;
-    background: url('../images/subsonic_36.png') no-repeat 5px 3px;   
+    top: 10px;
+    right: 200px;
+    width: 45px;
+    height: 45px;
+    border-radius: 32px;
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
     cursor: pointer;
 }
 #sslogo:hover
 {
-    background: url('../images/subsonic_dn_36.png') no-repeat 5px 2px;    
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 2px;  */   
 }
 #content 
 {
     background: #FFFFFF;
 	width: 100%;
-    height: 100%;
+    height: 80px;
 }
 #content h2
 {
@@ -221,7 +233,7 @@ span.apiversion
 }
 .smcolumn 
 {
-    height: 100%;
+    height: 75%;
     overflow-y: auto;
     outline: none;
 	width: 312px;
@@ -232,7 +244,7 @@ span.apiversion
 	/*border-right: 1px solid #ddd;
     border-top: 1px solid #cbcbcb;*/
 	position: fixed;
-	top: 40px;
+	top: 80px;
 	left: 0;
 	margin-bottom: -42px;
     background: #fff;
@@ -269,12 +281,12 @@ span.apiversion
 {
     height: 100%;
     background: #fff;
-    border-top: 1px solid #cbcbcb;
-    border-bottom: 1px solid #cbcbcb;
+    border-top: 3px solid #39b54a;
+    border-bottom: 3px solid #39b54a;
     width:  100%; 
     overflow: hidden;
     position: fixed;
-    top: 40px;
+    top: 75px;
 	/*
     bottom: 84px;
 	*/
@@ -291,7 +303,7 @@ span.apiversion
     border-top: 1px solid #cbcbcb;
     border-left: 1px solid #ddd;
     position: fixed;
-    top: 40px;
+    top: 80px;
     right: 0;
 	margin-bottom: -42px;
     opacity: .98;
@@ -325,7 +337,7 @@ span.apiversion
     border-top: 1px solid #cbcbcb;
     border-bottom: 1px solid #cbcbcb;
     position: absolute;
-    top: 40px;
+    top: 80px;
     bottom: 84px;
     width: 100%;
 }
@@ -485,6 +497,16 @@ ul.simplelist .item .itemactions a
 {
     float: left;
     width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0;
+}
+.itemactions-head
+{
+    float: left;
+    margin: 0 5px;
+    float: left;
+    width: 7.5%;
     height: 20px;
     display: block;
     margin: 0;
@@ -859,7 +881,7 @@ ul.songlist .row
 }
 ul.songlist .row a
 {
-    color: #7EA8D5;
+    /* color: #7EA8D5; */
     text-decoration: none;  
 }
 ul.songlist .row a:hover
@@ -967,6 +989,7 @@ ul.songlist .row a.favorite
 {
 	background: url('../images/star_yo_12x12.png') center 3px no-repeat;	
 }
+
 ul.songlist .row a.remove
 {
     width: 20px;
@@ -1840,4 +1863,14 @@ legend
     font-weight: bold;
 }
 
+.songtitle
+{
+	color:#5b5b4e;
+	font-weight: bold;
+}
 
+.time-head
+{
+    width: 5%; /* 90% */
+    text-align: right;
+}

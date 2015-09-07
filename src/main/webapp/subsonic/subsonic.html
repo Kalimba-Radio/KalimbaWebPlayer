@@ -32,11 +32,11 @@
         <div id="SubsonicAlbums" class="lgsection" split>
             <!-- Album -->
             <div id="right-component" class="lgcolumn" ng-class="{'lgcolumn_expanded' : !$rootScope.settings.ShowQueue}">
-                <ul class="actionlist">
+               <!--  <ul class="actionlist">
                     <li>
-                       <!--  <form class="form">-->
+                       
                             <select id="SelectedAlbumSort" ng-model="SelectedAlbumSort.id" ng-show="AlbumSort.length" ng-options="o.id as o.name for o in AlbumSort"></select>
-                      <!--   </form>-->
+                      
                         <div id="BreadCrumb">
                             <div id="BreadCrumbs" class="floatleft">
                                 <div class="crumb"><a ng-click="toggleArtists()" title="Toggle Artists">Artists</a> &gt;</div>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
                 <div class="clear"></div>
                 <ul class="simplelist songlist noselect">
                     <div class="" ng-repeat="o in album" ng-switch on="o.type">
@@ -73,7 +73,18 @@
                             <div class="clear"></div>
                         </li>
                     </div>
+                    <li ng-if="song.length > 0" class="row song" style="background-color:#ffffff">
+   						 <div class="itemactions-head">
+					     </div>
+    					 <div class="track floatleft" ></div>
+						 <div class="title floatleft"  ><a stop-event="click"><strong>SONG</strong></a></div>
+   						 <span class="artist floatleft" ><a stop-event="click" ng-click="sortSubsonicSongs('artist');"><strong>ARTIST</strong></a></span>
+    					 <div class="albumblock floatleft" ><a stop-event="click" class="songtitle" ng-click="sortSubsonicSongs('album');"><strong>ALBUM</strong></a></div>
+    					 <!-- <div class="albumblock floatleft">&nbsp;</div> -->
+  					     <div class="clear"></div>
+					</li>
                     <div ng-if="song.length > 0" ng-include src="'common/songs.html'" sortable></div>
+                    <div>&nbsp;</div>
                 </ul>
                 <div class="colspacer"></div>
             </div>
@@ -126,7 +137,7 @@
             <!-- Playlist -->
             <div id="PlaylistContainer" class="leftsubsection" ng-show="showPlaylist">
                 <ul class="simplelist mainlist noselect">
-                    <li class="index" id="auto">Auto Playlists</li>
+                   <!--   <li class="index" id="auto">Auto Playlists</li>
                     <li class="item" ng-click="getRandomStarredSongs('display')" ng-class="{'selected': selectedAutoPlaylist == 'starred'}">
                         <div class="itemactions">
                             <a class="add" href="" ng-click="getRandomStarredSongs('add')" title="Add To Play Queue" stop-event="click"></a>
@@ -140,7 +151,7 @@
                             <a class="play" href="" title="Play" ng-click="getRandomSongs('play')" stop-event="click"></a>
                         </div>
                         <div class="title">Random</div>
-                    </li>
+                    </li>-->
                    <!--  <li class="index" id="auto">Genre Playlists</li>
                     <select id="Genres" name="Genres" class="large" ng-model="selectedGenre" ng-options="o for o in Genres">
                         <option value="">[Select Genre]</option>
@@ -153,7 +164,7 @@
                         <div class="title">{{o}}</div>
                     </li>-->
                 </ul>
-               <!--  <ul class="simplelist mainlist noselect">
+                <!--  <ul class="simplelist mainlist noselect">
                     <li class="index" id="folder">Folder Playlists</li>
                     <li class="item" ng-repeat="o in MusicFolders | musicfolder" ng-click=" getRandomSongs('display', '' , o.id)" ng-class="{'selected': o.id == selectedAutoPlaylist}">
                         <div class="itemactions">
@@ -162,8 +173,8 @@
                         </div>
                         <div class="title">{{o.name}}</div>
                     </li>
-                </ul>
-                <ul class="simplelist mainlist noselect">
+                </ul>-->
+               <!--  <ul class="simplelist mainlist noselect">
                     <li class="index" id="auto">My Playlists</li>
                     <li class="item" ng-repeat="o in playlists" ng-click="getPlaylist('display', o.id)" ng-class="{'selected': o.id == selectedPlaylist}">
                         <div class="itemactions">
@@ -172,7 +183,7 @@
                         </div>
                         <div class="title" title="{{'Songs: ' + o.songCount + ', Public: ' + o.public}}">{{o.name}}</div>
                     </li>
-                </ul>-->
+                </ul> -->
                 
                 <ul id="AutoAlbumContainer" class="simplelist mainlist noselect">
                     <li class="index" id="auto">Auto Albums</li>
@@ -185,8 +196,22 @@
                     </li>
                 </ul>
                 
-               <!--  <ul class="simplelist mainlist noselect">
+                <ul class="simplelist mainlist noselect">
                     <li class="index" id="auto">Playlists</li>
+                     <li class="item" ng-click="getRandomStarredSongs('display')" ng-class="{'selected': selectedAutoPlaylist == 'starred'}">
+                        <div class="itemactions">
+                            <a class="add" href="" ng-click="getRandomStarredSongs('add')" title="Add To Play Queue" stop-event="click"></a>
+                            <a class="play" href="" ng-click="getRandomStarredSongs('play')" title="Play" stop-event="click"></a>
+                        </div>
+                        <div class="title">Starred</div>
+                    </li>
+                    <li class="item" ng-click="getRandomSongs('display')" ng-class="{'selected': selectedAutoPlaylist == 'random'}">
+                        <div class="itemactions">
+                            <a class="add" href="" title="Add To Play Queue" ng-click="getRandomSongs('add')" stop-event="click"></a>
+                            <a class="play" href="" title="Play" ng-click="getRandomSongs('play')" stop-event="click"></a>
+                        </div>
+                        <div class="title">Random</div>
+                    </li>
                     <li class="item" ng-repeat="o in playlistsPublic" ng-click="getPlaylist('display', o.id)" ng-class="{'selected': o.id == selectedPlaylist}">
                         <div class="itemactions">
                             <a class="add" href="" title="Add To Play Queue" ng-click="getPlaylist('add', o.id)" stop-event="click"></a>
@@ -194,7 +219,7 @@
                         </div>
                         <div class="title" title="{{'Owner: ' + o.owner + ' Songs: ' + o.songCount}}">{{o.name}}</div>
                     </li>
-                </ul>-->
+                </ul>
             </div>
             <!-- Podcasts -->
             <div id="PodcastContainer" class="leftsubsection" ng-show="showPodcast">
@@ -211,6 +236,9 @@
             </div>
             <div class="colspacer"></div>
         </div>
+       <!--  <div id="bottom-left-component"  tabindex="0">
+        hello
+        </div> -->
         <div id="submenu_AZIndex" class="submenu shadow" style="display: none;">
             <ul>
                 <li ng-repeat="o in index"><a href="" ng-click="scrollToIndexName(o.name)">{{o.name}}</a></li>
@@ -219,16 +247,6 @@
             </ul>
         </div>
     </div>
-    <div class="social_login">
-			<div class="">
-				<fb:login-button v="2"
-					scope="public_profile,email,user_birthday,user_hometown,user_location,user_relationships"
-					size="xlarge" onlogin="checkLoginState('A');">Login with Facebook</fb:login-button>
-				<br />
-				<!-- 	<div id="gSignInWrapper">
-  <div id="myButton" class="classesToStyleWith">
-  </div> -->
-
-<div class="clear"></div>
-</div>
+   
+				
 <!-- End: Library Tab -->
