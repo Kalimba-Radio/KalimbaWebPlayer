@@ -61,6 +61,20 @@ angular.module('jamstash.settings.service', [])
         Debug: false,
         ShowQueue: false
     };
+    this.user= {
+        	email:null,
+        	name:null,
+        	firstName:null,
+        	lastName:null,
+        	gender:null,
+        	birthday:null,
+        	location:null,
+        	hometown:null,
+        	relationship:null,
+        	timezone:null,
+        	providerId:null,
+        	userType:null
+        };
     this.SavedCollections = [];
     this.SavedGenres = [];
     this.Player1 = '#playdeck_1';
