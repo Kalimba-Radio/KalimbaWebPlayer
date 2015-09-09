@@ -901,8 +901,8 @@ ul.songlist .row img
     float: left;
     margin: 0 5px;
     padding: 2px;
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 10px;
 }
 ul.songlist .row .itemactions
 {
@@ -1841,6 +1841,18 @@ label
 {
     float: left;
     margin: 5px 5px 0 5px;
+}
+.cartstyle
+{
+	 position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    /* width: 30em; */
+    /* height: 18em; */
+    /* margin-top: -9em; */
+    /* margin-left: -15em; */
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
 }
 fieldset
 {
