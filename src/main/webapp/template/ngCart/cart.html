@@ -11,7 +11,7 @@
         <tr>
             <th></th>
             <th></th>
-            <th>Quantity</th>
+            <th>Name</th>
             <th>Amount</th>
             <th>Total</th>
             
@@ -53,6 +53,7 @@
                 <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
             <td>{{ item.getPrice() | currency}}</td>
             <td>{{ item.getTotal() | currency }}</td>
+            <td>{{ item.getImg()}}</td>
         </tr>
         </tbody>
     </table>
