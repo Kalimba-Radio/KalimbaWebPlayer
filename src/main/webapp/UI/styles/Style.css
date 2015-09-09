@@ -76,7 +76,7 @@ span.apiversion
 #container {
 	text-align: left;
     overflow: hidden;
-    width: 100%;
+    width: 50%;
     height: 100%;
 }
 #version

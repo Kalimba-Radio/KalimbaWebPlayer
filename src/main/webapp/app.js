@@ -2,7 +2,7 @@
 
 /* Declare app level module */
 angular.module('JamStash', ['ngCookies', 'ngRoute', 'ngSanitize', 'ui.keypress', 'angular-underscore/utils',
-    'jamstash.subsonic.controller', 'jamstash.archive.controller', 'jamstash.player.controller', 'jamstash.queue.controller', 'jamstash.settings.controller', 'jamstash.persistence'])
+    'jamstash.subsonic.controller', 'jamstash.archive.controller', 'jamstash.player.controller', 'jamstash.queue.controller', 'jamstash.settings.controller', 'jamstash.persistence','ngCart'])
 
 .config(['$routeProvider',function($routeProvider) {
     $routeProvider
@@ -16,6 +16,7 @@ angular.module('JamStash', ['ngCookies', 'ngRoute', 'ngSanitize', 'ui.keypress',
         .when('/archive', { templateUrl: 'archive/archive.html', controller: 'ArchiveController' })
         .when('/archive/:artist', { templateUrl: 'archive/archive.html', controller: 'ArchiveController' })
         .when('/archive/:artist/:album', { templateUrl: 'archive/archive.html', controller: 'ArchiveController' })
+        .when('/checkout',{templateUrl:'template/ngCart/checkout.html'})
         .otherwise({ redirectTo: '/index' });
 }])
 

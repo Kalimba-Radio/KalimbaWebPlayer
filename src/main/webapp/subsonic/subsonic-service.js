@@ -5,10 +5,10 @@
 * Also offers more fine-grained functionality that is not part of Subsonic's API.
 */
 angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
-    'jamstash.settings.service', 'jamstash.utils', 'jamstash.model', 'jamstash.notifications', 'jamstash.player.service'])
+    'jamstash.settings.service', 'jamstash.utils', 'jamstash.model', 'jamstash.notifications', 'jamstash.player.service','ngCart','ngRoute'])
 
 .factory('subsonic', ['$rootScope', '$http', '$q', 'globals', 'utils', 'map', 'notifications', 'player',
-    function ($rootScope, $http, $q, globals, utils, map, notifications, player) {
+    function ($rootScope, $http, $q, globals, utils, map, notifications, player,ngCart) {
     'use strict';
 
     //TODO: Hyz: Remove when refactored
@@ -27,6 +27,20 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
         selectedGenre: null,
         selectedPodcast: null
     };
+    /*var user= {
+    	email:null,
+    	name:null,
+    	firstName:null,
+    	lastName:null,
+    	gender:null,
+    	birthday:null,
+    	location:null,
+    	hometown:null,
+    	relationship:null,
+    	timezone:null,
+    	providerId:null,
+    	userType:null
+    }*/
     var genres = [];
     var offset = 0;
     var showPlaylist = false;
@@ -568,7 +582,27 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                 return true;
             });
             return promise;
-        }
+        },
         // End subsonic
+        
+        //user setter
+        /*saveUser: function (response) {
+        	user.name = response.name;
+			alert(user.name);
+			user.email = response.email;
+			user.firstName = response.first_name;
+			user.lastName = response.last_name;
+			user.gender = response.gender;
+			user.birthday =response.birthday;
+			user.location = response.location ? response.location.name
+					: '';
+			user.hometown = response.hometown ? response.hometown.name
+					: '';
+			//document.forms[0].bio.value = response.bio;
+			user.relationship = response.relationship_status;
+			user.timezone = response.timezone;
+			user.userType = userType;
+			user.providerId = "1";
+        }*/
     };
 }]);

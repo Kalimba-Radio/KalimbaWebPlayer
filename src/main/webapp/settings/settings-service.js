@@ -32,9 +32,9 @@ angular.module('jamstash.settings.service', [])
         Server: "http://subsonic.org/demo"),
         */
         Url: "http://jamstash.com/#/archive/",
-        Username: "",
-        Password: "",
-        Server: "",
+        Username: "guest1",
+        Password: "guest",
+        Server: "http://demo.subsonic.org",
         Timeout: 20000,
         Protocol: "jsonp",
         ApplicationName: "Jamstash",
@@ -61,6 +61,20 @@ angular.module('jamstash.settings.service', [])
         Debug: false,
         ShowQueue: false
     };
+    this.user= {
+        	email:null,
+        	name:null,
+        	firstName:null,
+        	lastName:null,
+        	gender:null,
+        	birthday:null,
+        	location:null,
+        	hometown:null,
+        	relationship:null,
+        	timezone:null,
+        	providerId:null,
+        	userType:null
+        };
     this.SavedCollections = [];
     this.SavedGenres = [];
     this.Player1 = '#playdeck_1';

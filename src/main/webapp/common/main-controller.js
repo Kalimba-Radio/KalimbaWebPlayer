@@ -10,11 +10,12 @@ angular.module('JamStash')
     $rootScope.Genres = [];
     $rootScope.Messages = [];
 
-    $rootScope.SelectedMusicFolder = "";
+    $rootScope.SelectedMusicFolder = "newest";
     $rootScope.unity = null;
     $scope.Page = Page;
     $rootScope.loggedIn = function () {
         if (globals.settings.Server !== '' && globals.settings.Username !== '' && globals.settings.Password !== '') {
+        	persistence.saveSettings($rootScope.settings);
             return true;
         } else {
             return false;
@@ -33,16 +34,18 @@ angular.module('JamStash')
         // Temporary Code to Convert Cookies added 2/2/2014
         if ($cookieStore.get('Settings')) {
             persistence.saveSettings($cookieStore.get('Settings'));
+            persistence.saveSettings($rootScope.getSettings());
             $cookieStore.remove('Settings');
         }
         var settings = persistence.getSettings();
         if (settings !== undefined) {
-            var updSettings = _(settings).omit('Url');
+            //var updSettings = _(settings).omit('Url');
             // We can't just assign settings to globals.settings because it's on the scope
             // TODO: Hyz: remove $rootScope.settings and replace with individual settings
-            _(updSettings).each(function(val, key) {
-                globals.settings[key] = val;
-            });
+            //_(updSettings).each(function(val, key) {
+            //    globals.settings[key] = val;
+        	persistence.saveSettings(globals.settings);
+           // });
         }
         if (utils.getValue("SavedCollections")) { globals.SavedCollections = utils.getValue("SavedCollections").split(","); }
         if (utils.getValue("DefaultCollection")) { globals.DefaultCollection = utils.getValue("DefaultCollection"); }
@@ -251,6 +254,36 @@ angular.module('JamStash')
             player.play(next);
         }
     };
+    
+    /* ToDo
+     * 
+     * $rootScope.playFrom = function (index, songs) {
+        // TODO: Hyz: Replace
+    	if ($scope.selectedSongs.length = 0) {
+        var from = songs.slice(index,index+1);
+        $scope.selectedSongs = [];
+        angular.forEach(from, function (item, key) {
+            $scope.selectedSongs.push(item);
+            item.selected = true;
+        });
+    	}
+    	else if ($scope.selectedSongs.length > 0) {
+        	if(player.queue.length==0){
+        		player.queue = [];
+        		$rootScope.addSongsToQueue();
+        		var next = player.queue[0];
+        		player.play(next);
+        	}else{
+        		 angular.forEach($scope.selectedSongs, function (item, key) {
+                     player.queue.push(item);
+                     item.selected = false;
+                 });
+                 notifications.updateMessage($scope.selectedSongs.length + ' Song(s) Added to Queue', true);
+                 $scope.selectedSongs.length = 0;
+        	}
+        }
+    };
+     */
     $rootScope.addSongsToQueue = function () {
         // TODO: Hyz: Replace
         if ($scope.selectedSongs.length !== 0) {
@@ -404,7 +437,28 @@ angular.module('JamStash')
     $scope.toTrusted = function (html) {
         return $sce.trustAsHtml(html);
     };
-
+    
+    //save users
+    
+    $scope.saveUser=function (response) {
+    	globals.user.name = response.name;
+		//alert(globals.user.name);
+		globals.user.email = response.email;
+		globals.user.firstName = response.first_name;
+		globals.user.lastName = response.last_name;
+		globals.user.gender = response.gender;
+		globals.user.birthday =response.birthday;
+		globals.user.location = response.location ? response.location.name
+				: '';
+		globals.user.hometown = response.hometown ? response.hometown.name
+				: '';
+		//document.forms[0].bio.value = response.bio;
+		globals.user.relationship = response.relationship_status;
+		globals.user.timezone = response.timezone;
+		globals.user.userType = 'A';
+		globals.user.providerId = "1";
+    };
+    
     /* Launch on Startup */
     $scope.loadSettings();
     utils.switchTheme(globals.settings.Theme);
