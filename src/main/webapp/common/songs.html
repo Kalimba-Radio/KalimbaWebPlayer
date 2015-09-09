@@ -5,7 +5,7 @@
         <!--<a class="play" href="" title="Start Playing From This Song" ng-click="playFrom($index)" stop-event="click"></a>-->
         <!--<a class="download" href="" title="Download Song" ng-click="download(o.id)"></a>-->
         <a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>
-        <ngcart-addtocart id="{{ o.id }}" name="{{ o.name }}" price="{{1}}" quantity="1" quantity-max="1" img="<img src="{{o.coverartfull}}">">
+        <ngcart-addtocart id="{{ o.id }}" name="{{ o.name }}" price="{{1}}" quantity="1" quantity-max="1" img="<img src="{{o.coverartfull}}">
         <img src="images/download_gl_9x12.png"  style="float:right;position: relative;top: -16px;right: -50px;left: 50px"/> 
         </ngcart-addtocart>
         <div class="clear"></div>
