@@ -18,6 +18,63 @@
     <link href="styles/Style.css" rel="stylesheet" type="text/css" data-name="main" />
     <link href="styles/Mobile.css" rel="stylesheet" type="text/css" data-name="main" />
     <link href="" rel="stylesheet" type="text/css" data-name="theme" />
+    <style>
+    .tiptext {
+    background:#D4E2F1;
+    border: 1px #333;
+    padding:5px;
+    width:auto;
+    color: #222;
+    left: 900px;
+}
+.description {
+   margin-top:36px;
+      
+     display:none; 
+    position:absolute;
+    border:1px solid #000;
+    width:300px;
+    height:auto;
+    z-index: 1;
+    background-color:#6495ED;
+   margin-left: -90px;
+   
+}
+
+.overlay {
+     visibility: hidden;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     display:none;
+}
+
+.boxshadow 
+{
+  -moz-box-shadow: 3px 3px 5px #535353;
+  -webkit-box-shadow: 3px 3px 5px #535353;       
+  box-shadow: 3px 3px 5px #535353;
+}
+.roundbox
+{  
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px;  
+  border-radius: 6px 6px 6px 6px;
+}
+
+</style>
+    <script>
+    $(".tiptext").mouseover(function() {
+    	 autoOpen: false;
+        $(this).children(".description").show();
+    }).mouseout(function() {
+        $(this).children(".description").hide();
+    });
+</script>
 </head>
 <body ui-keypress="{'32 179': 'togglePause($event)', '43 61 187': 'turnVolumeUp($event)', '45 95 189': 'turnVolumeDown($event)'}" ui-keydown="{'right 176': 'nextTrack($event)', 'left 177': 'previousTrack($event)'}">
    <form action="" method="post">
@@ -27,14 +84,23 @@
                 <span ng-attr-id="{{ 'msg_' + $index }}" class="message" ng-repeat="item in Messages track by $index" ng-bind-html="item"></span>
             </div>
             <div id="loading"></div>
-            <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
+           
             <!-- <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>-->
             
             <fb:login-button id="sslogo" size="medium" onlogin="checkLoginState('A');">
             <a id="ssname" href=""></a>
-            <div id="globalactions">
-                <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue"><img src="images/arrow_right_gl_8x8.png" /></a>
-            </div>
+            
+          <div align="center" class="tiptext cartstyle" style="">
+         <div class="description boxshadow roundbox" id="overlay">
+        
+         <ngcart-cart></ngcart-cart>
+         <ngcart-checkout service="http" settings="{ url:'#/checkout' }">Checkout</ngcart-checkout> 
+         </div>
+             <ngcart-summary></ngcart-summary>             
+       	
+         </div>
+        
+           
            <!--   <div id="nav">
                 <ul class="tabs">
                     <li><a href="#/library" class="first" id="action_Library" title="Library" ng-class="{'active': isActive('/library')}"><img src="images/headphones_gd_16x14.png" /></a></li>
@@ -370,6 +436,7 @@
     <script src="bower_components/angular-underscore/angular-underscore.js"></script>
     <script src="bower_components/angular-locker/dist/angular-locker.min.js"></script>
     <script src="bower_components/angular-ui-utils/keypress.js"></script>
+    <script src="bower_components/ngcart/dist/ngCart.js"></script>
     <!-- endbower -->
     <script src="vendor/jquery.base64.js"></script>
     <script src="vendor/jquery.dateFormat-1.0.js"></script>
