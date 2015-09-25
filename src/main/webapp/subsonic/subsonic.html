@@ -32,7 +32,8 @@
         </div>
         <div id="SubsonicAlbums" class="lgsection" split>
             <!-- Album -->
-            <div id="right-component" class="lgcolumn" ng-class="{'lgcolumn_expanded' : !$rootScope.settings.ShowQueue}">
+            <!-- <div id="right-component" class="lgcolumn" ng-class="{'lgcolumn_expanded' : !$rootScope.settings.ShowQueue}"> -->
+            <div id="right-component" class="lgcolumn">
                <!--  <ul class="actionlist">
                     <li>
                        
@@ -51,13 +52,13 @@
                 <ul class="simplelist songlist noselect">
                     <div class="" ng-repeat="o in album" ng-switch on="o.type">
                         <li class="album" ng-switch-when="byfolder" id="{{o.id}}" ng-class="{'selected': selectedAlbum == o.id, 'albumgrid': settings.DefaultLibraryLayout.id == 'grid'}" ng-click="getSongs(o.id, '')" parentid="{{o.parentid}}">
-                            <div class="itemactions">
+                           <!--   <div class="itemactions">
                                 <a class="add hover" href="" title="Add To Play Queue" ng-click="getSongs(o.id, 'add')" stop-event="click"></a>
                                 <a class="play hover" href="" title="Play" ng-click="getSongs(o.id, 'play')" stop-event="click"></a>
                                 <a class="download hover" href="" ng-click="download(o.id)" title="Download" stop-event="click"></a>
                                 <a title="Favorite hover" href="" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>
                                 <a class="info hover" href="" title="{{'Created: ' + o.date}}"></a>
-                            </div>
+                            </div>-->
                             <div class="albumart"><img ng-src="{{o.coverartthumb}}" src="images/albumdefault_160.jpg"></div>
                             <div class="albuminfo">
                                 <div class="title" title="{{o.name}}" ng-bind-html="o.name"></div>
@@ -74,11 +75,12 @@
                             <div class="clear"></div>
                         </li>
                     </div>
+                   
                     <li ng-if="song.length > 0" class="row song" style="background-color:#ffffff">
    						 <div class="itemactions-head">
 					     </div>
     					 <div class="track floatleft" ></div>
-						 <div class="title floatleft"  ><a stop-event="click"><strong>SONG</strong></a></div>
+						 <div class="title floatleft" style="margin-left: 100px;"  ><a stop-event="click"><strong>SONG</strong></a></div>
    						 <span class="artist floatleft" ><a stop-event="click" ng-click="sortSubsonicSongs('artist');"><strong>ARTIST</strong></a></span>
     					 <div class="albumblock floatleft" ><a stop-event="click" class="songtitle" ng-click="sortSubsonicSongs('album');"><strong>ALBUM</strong></a></div>
     					 <!-- <div class="albumblock floatleft">&nbsp;</div> -->
@@ -100,7 +102,7 @@
         <div style="height:50px">&nbsp;</div>
             <ul class="tablist">
                 <li class=""  ng-class="{'selected': setIndexSelected }"  ng-click="toggleIndex()"><a href="">Artists</a></li>
-                <li class=""  ng-class="{'selected': setPlaylistSelected }" ng-click="togglePlaylist()"><a href="">Featured</a></li>
+                <li class=""  ng-class="{'selected': setPlaylistSelected }" ng-click="togglePlaylist()"><a href="">Playlist</a></li>
                 <!-- <li class="" ng-click="togglePodcast()"><a href="">Podcasts</a></li>-->
             </ul>
             <div class="clear"></div>
@@ -235,11 +237,22 @@
                     </li>
                 </ul>
             </div>
-            <div class="colspacer"></div>
+          <!--    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+Media Player 300x250
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-3742136992666331"
+     data-ad-slot="6369292805"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> -->
+<!-- <div>
+<img src="images/Ads250X200.png"/></div>
+            <div class="colspacer"></div> -->
         </div>
-       <!--  <div id="bottom-left-component"  tabindex="0">
-        hello
-        </div> -->
+       <div id="left-component" class="smcolumn-bottom noselect" tabindex="0">
+        <img src="images/Ads250X200.png"/>
+        </div>
         <div id="submenu_AZIndex" class="submenu shadow" style="display: none;">
             <ul>
                 <li ng-repeat="o in index"><a href="" ng-click="scrollToIndexName(o.name)">{{o.name}}</a></li>

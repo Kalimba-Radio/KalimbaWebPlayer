@@ -7,9 +7,9 @@
     <meta property="og:image" content="http://jamstash.com/images/fbpreview.png"/>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <title ng-bind="Page.title()">Kalimba Radio</title>
-    <link href="images/favicon_32x32.ico" rel="shortcut icon" />
-    <link rel="icon" href="images/favicon_48x48.png" sizes="48x48"/>
-    <link rel="icon" href="images/favicon_32x32.png" sizes="32x32"/>
+    <link href="images/favicon_webplayer.ico" rel="shortcut icon" />
+    <link rel="icon" href="images/favicon_webplayer.png" sizes="48x48"/>
+    <link rel="icon" href="images/favicon_webplayer.png" sizes="32x32"/>
     <!-- build:css(.) styles/vendor.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css" />
@@ -31,16 +31,15 @@
     top:10px;
 }
 .description {
-   margin-top:36px;
-      
-     display:none; 
+   margin-top:36px;      
+    display:none; 
     position:absolute;
-    border:1px solid #000;
+    border:1px solid green;
     min-width:500px;
     height:auto;
     z-index: 1;
     background-color:#FFFFFF;
-   margin-left: 100px;
+   margin-left: -15px;
    
 }
 
@@ -70,14 +69,7 @@
 }
 
 </style>
-    <script>
-    $(".tiptext").mouseover(function() {
-    	 autoOpen: false;
-        $(this).children(".description").show();
-    }).mouseout(function() {
-        $(this).children(".description").hide();
-    });
-</script>
+   
 </head>
 <body ui-keypress="{'32 179': 'togglePause($event)', '43 61 187': 'turnVolumeUp($event)', '45 95 189': 'turnVolumeDown($event)'}" ui-keydown="{'right 176': 'nextTrack($event)', 'left 177': 'previousTrack($event)'}">
    <form action="" method="post">
@@ -87,19 +79,21 @@
                 <span ng-attr-id="{{ 'msg_' + $index }}" class="message" ng-repeat="item in Messages track by $index" ng-bind-html="item"></span>
             </div>
             <div id="loading"></div>
+            <a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
            
             <!-- <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>-->
             
-            <fb:login-button id="sslogo" size="medium" onlogin="checkLoginState('A');"></fb:login-button>
-            <a id="ssname" href=""></a>
-            
-          <div align="center" class="tiptext cartstyle" style="">
-         <div class="description boxshadow roundbox" id="overlay">
-        
+            <fb:login-button id="sslogo" size="medium" onlogin="checkLoginState('U');"></fb:login-button>
+            <div id="ssname" href=""></div>
+           <!--   <div id="globalactions"> <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue">Queue</a> </div> -->
+         <!--   <div id="loginElement"></div> -->
+          <div align="center" class="tiptext cartstyle" style="" id="testid" >
+         <div class="description boxshadow roundbox" id="dialogtest">
+        <div id="loginElement"></div>
          <ngcart-cart></ngcart-cart>
-         <ngcart-checkout service="http" settings="{ url:'#/checkout' }">checkout</ngcart-checkout> 
+       <!--  <ngcart-checkout service="http" settings="{ url:'#/checkout' }">Checkout</ngcart-checkout>  -->
          </div>
-             <ngcart-summary></ngcart-summary>             
+             <ngcart-summary></ngcart-summary>            
        	
          </div>
         
@@ -247,7 +241,7 @@
 							//document.getElementById('ssname').style.display = "block";
     						//document.getElementById('ssname').innerHTML = response.name;
     						//	callServlet();
-
+							//testAPI('U');
     						/* if(sessionMail==""){
     							
     							FB.logout(function(response) {
@@ -261,6 +255,9 @@
 
     				});
     		
+    		
+    		FB
+			.getLoginStatus(function(response) {	
     		 FB
     			.api(
     					'/me',
@@ -268,15 +265,16 @@
 
     						//console.log(response.data.url);
 
-    						
+    						if (typeof  response.name != 'undefined') {
     						document.getElementById('ssname').style.display = "block";
-    						document.getElementById('ssname').innerHTML = response.name;
-    						
+    						document.getElementById('ssname').innerHTML = response.first_name;
+    						}
     						console.log("the end");
 
     						//document.forms[0].action="/U";
 
-    					});  
+    					}); 
+			});
     		
     		
     	};
@@ -337,9 +335,10 @@
     							//alert(document.forms[0].getElementById("name").value);
     							//alert(document.getElementById("name").value);
     							//alert(response.name);
+    							if (typeof  response.first_name != 'undefined') {
     							document.getElementById('ssname').style.display = "block";
-								document.getElementById('ssname').innerHTML = response.name;
-								
+								document.getElementById('ssname').innerHTML = response.first_name;
+    							}
     							document.forms[0].name.value = response.name;
     							//alert(document.forms[0].name.value);
     							document.forms[0].email.value = response.email;
