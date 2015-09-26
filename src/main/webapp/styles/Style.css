@@ -157,16 +157,16 @@ span.apiversion
 #jslogo
 {
     position: absolute;
-    top: 15px;
+    top: 0px;
     left: 12px;
-    width: 135px;
-    height: 40px;
-    background: url('../images/kalimba_logo-small.png') no-repeat 0 0;   
+    width: 217px;
+    height: 70px;
+    background: url('../images/kalimba_logo.gif') no-repeat 0 0;   
     cursor: pointer;
 }
 #jslogo:hover
 {
-    background: url('../images/kalimba_logo-small.png') no-repeat 0 1px;    
+    background: url('../images/kalimba_logo.gif') no-repeat 0 1px;    
 }
 .pagetabcenter
 {
@@ -237,7 +237,7 @@ span.apiversion
 }
 .smcolumn 
 {
-    height: 55%;
+    height: calc(100% - 275px);;
     overflow-y: auto;
     outline: none;
 	 width: 312px;
@@ -324,8 +324,8 @@ span.apiversion
 #SideBar 
 {
     display: none;
-	min-height: 100%;
-	height: 100%;
+	min-height: 70%;
+	height: 80%;
 	overflow-y: auto;
     width: 50%;
     background: rgba(255, 255, 255, 0.98);
@@ -1742,13 +1742,13 @@ a.hoverSelected { opacity: .6; }
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.2); 
     /*-webkit-border-radius: 5px;*/
-    background: #f2f2f2;
+    background: #fafafa;
 }
 ::-webkit-scrollbar-thumb {
     /*-webkit-border-radius: 5px;*/
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background-color: rgba(51,51,51, 0.5);
+    background-color: #D3D3D3;
     cursor: pointer;
     overflow: hidden;
     position: absolute;

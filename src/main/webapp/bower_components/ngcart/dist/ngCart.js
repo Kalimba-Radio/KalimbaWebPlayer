@@ -358,10 +358,10 @@ angular.module('ngCart', ['ngCart.directives'])
            		//document.getElementsByClassName("tiptext").unbind('mouseover mouseout'); 
            		
            	}else{
-           		document.getElementById("testid").style.color="green"; 
-           		document.getElementById("dialogtest").style.width="300px";
+           		//document.getElementById("testid").style.color="green"; 
+           		document.getElementById("dialogtest").style.width="50px";
            		document.getElementById("dialogtest").style.height="auto";
-           		document.getElementById("dialogtest").style.border="1px solid green";
+           		document.getElementById("dialogtest").style.border="1px solid #39B54A";
            		/*document.getElementByClassName("tiptext").addEventListener("mousemove",function() {
            	    	 autoOpen: false;
            	        $(this).children(".description").show();
