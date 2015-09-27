@@ -261,7 +261,7 @@ span.apiversion
 }
 .smcolumn-bottom
 {
-    height: 25%;
+    height: 190px;
     overflow-y: auto;
     outline: none;
 	/* width: 312px; */
@@ -289,7 +289,7 @@ span.apiversion
     overflow-y: auto;
     outline: none;
 	margin-left: 312px;
-	margin-right: 275px;
+	margin-right: 312px;
     min-width: 400px;
 }
 .lgcolumn_expanded
@@ -1915,4 +1915,46 @@ legend
 {
     width: 5%; /* 90% */
     text-align: right;
+}
+
+.dwn-button-div {
+    width: 300px;
+    height:55px;
+    margin: auto;
+    margin-top:5px;
+    margin-bottom:0px;
+    float: auto;
+}
+.social-button-div {
+    width: 300px;
+    height:25px;
+    margin: auto;
+    margin-top:5px;
+    margin-bottom:5px;
+    float: auto;
+}
+
+.dwn-button {
+    width: 150px;
+    height: 55px;
+    margin: auto;
+    float: left;
+}
+.social-button {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+    float: left;
+}
+
+.float_center {
+  float: right;
+
+  position: relative;
+  left: -37.5%; /* or right 50% */
+  text-align: left;
+}
+.float_center > .child {
+  position: relative;
+  left: 50%;
 }
