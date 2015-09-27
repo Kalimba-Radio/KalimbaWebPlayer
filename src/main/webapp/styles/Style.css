@@ -157,16 +157,16 @@ span.apiversion
 #jslogo
 {
     position: absolute;
-    top: 15px;
+    top: 0px;
     left: 12px;
-    width: 135px;
-    height: 40px;
-    background: url('../images/kalimba_logo-small.png') no-repeat 0 0;   
+    width: 217px;
+    height: 70px;
+    background: url('../images/kalimba_logo.gif') no-repeat 0 0;   
     cursor: pointer;
 }
 #jslogo:hover
 {
-    background: url('../images/kalimba_logo-small.png') no-repeat 0 1px;    
+    background: url('../images/kalimba_logo.gif') no-repeat 0 1px;    
 }
 .pagetabcenter
 {
@@ -192,11 +192,15 @@ span.apiversion
 #ssname
 {
     position: absolute;
-    top: 15px;
-    right: 70px;
-    width: 54px;
-    height: 80px;
+    top: 25px;
+    right: 35px;
+    width: 120px;
+    height: 30px;
     border-radius: 32px;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #6B6B6B;
+    font-size: 15px;
     /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
     cursor: pointer;
 }
@@ -204,7 +208,7 @@ span.apiversion
 {
     position: absolute;
     top: 10px;
-    right: 200px;
+    right: 170px;
     width: 45px;
     height: 45px;
     border-radius: 32px;
@@ -233,25 +237,50 @@ span.apiversion
 }
 .smcolumn 
 {
-    height: 75%;
+    height: calc(100% - 275px);;
     overflow-y: auto;
     outline: none;
-	width: 312px;
+	 width: 312px;
+	/* width:312; */
 	/*
     float: left;
 	margin-left: -100%;
 	*/
 	/*border-right: 1px solid #ddd;
     border-top: 1px solid #cbcbcb;*/
-	position: fixed;
+	position: absolute;
 	top: 80px;
 	left: 0;
-	margin-bottom: -42px;
+	margin-bottom: -72px;
     background: #fff;
 }
 .smcolumn .leftactions {
     margin: 6px 0px 0 0;
-    position: fixed;
+    position: absolute;
+    left: 264px;
+}
+.smcolumn-bottom
+{
+    height: 190px;
+    overflow-y: auto;
+    outline: none;
+	/* width: 312px; */
+	width:312px;
+	/*
+    float: left;
+	margin-left: -100%;
+	*/
+	/*border-right: 1px solid #ddd;
+    border-top: 1px solid #cbcbcb;*/
+	position:absolute;
+	bottom: 80px;
+	left: 0;
+	margin-bottom: -72px;
+    background: #fff;
+}
+.smcolumn-bottom .leftactions {
+    margin: 6px 0px 0 0;
+    position: absolute;
     left: 264px;
 }
 .lgcolumn 
@@ -260,7 +289,7 @@ span.apiversion
     overflow-y: auto;
     outline: none;
 	margin-left: 312px;
-	margin-right: 350px;
+	margin-right: 312px;
     min-width: 400px;
 }
 .lgcolumn_expanded
@@ -295,16 +324,16 @@ span.apiversion
 #SideBar 
 {
     display: none;
-	min-height: 100%;
-	height: 100%;
+	min-height: 70%;
+	height: 80%;
 	overflow-y: auto;
-    width: 350px;
+    width: 50%;
     background: rgba(255, 255, 255, 0.98);
-    border-top: 1px solid #cbcbcb;
-    border-left: 1px solid #ddd;
+    border: 1px solid #39b54a;
+    /* border-left: 1px solid #ddd; */
     position: fixed;
     top: 80px;
-    right: 0;
+    left: 25%;
 	margin-bottom: -42px;
     opacity: .98;
 }
@@ -319,7 +348,7 @@ span.apiversion
 }
 #SideBar .headeractions
 {
-	position: fixed;
+	position: absolute;
 	right: 10px;
 	padding: 2px 2px 0 0;
 }
@@ -506,7 +535,7 @@ ul.simplelist .item .itemactions a
     float: left;
     margin: 0 5px;
     float: left;
-    width: 7.5%;
+    width: 8%;
     height: 20px;
     display: block;
     margin: 0;
@@ -1131,7 +1160,7 @@ ul.songlist li:hover
 {
     position: absolute;
     top: 0px;
-    right: 65px;
+    right: 15px;
     height: 29px;
     margin: 6px 0 0 0;
 }
@@ -1298,7 +1327,7 @@ ul.songlist li:hover
 {
     width: auto;
     height: 45px;
-    margin: 0 10px 0 0;
+    margin: 0 85px 0 0;
     background: none;
     font-family: inherit;
     font-size: 10px;
@@ -1713,13 +1742,13 @@ a.hoverSelected { opacity: .6; }
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.2); 
     /*-webkit-border-radius: 5px;*/
-    background: #f2f2f2;
+    background: #fafafa;
 }
 ::-webkit-scrollbar-thumb {
     /*-webkit-border-radius: 5px;*/
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background-color: rgba(51,51,51, 0.5);
+    background-color: #D3D3D3;
     cursor: pointer;
     overflow: hidden;
     position: absolute;
@@ -1886,4 +1915,46 @@ legend
 {
     width: 5%; /* 90% */
     text-align: right;
+}
+
+.dwn-button-div {
+    width: 300px;
+    height:55px;
+    margin: auto;
+    margin-top:5px;
+    margin-bottom:0px;
+    float: auto;
+}
+.social-button-div {
+    width: 300px;
+    height:25px;
+    margin: auto;
+    margin-top:5px;
+    margin-bottom:5px;
+    float: auto;
+}
+
+.dwn-button {
+    width: 150px;
+    height: 55px;
+    margin: auto;
+    float: left;
+}
+.social-button {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+    float: left;
+}
+
+.float_center {
+  float: right;
+
+  position: relative;
+  left: -37.5%; /* or right 50% */
+  text-align: left;
+}
+.float_center > .child {
+  position: relative;
+  left: 50%;
 }
