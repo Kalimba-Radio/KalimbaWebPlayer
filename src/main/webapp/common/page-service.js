@@ -8,7 +8,7 @@ angular.module('jamstash.page', ['jamstash.settings.service', 'jamstash.utils'])
 .factory('Page', ['$interval', 'globals', 'utils', function($interval, globals, utils){
     'use strict';
 
-    var title = 'Jamstash';
+    var title = 'Kalimba Radio';
     var timer;
     return {
         title: function() { return title; },
@@ -20,7 +20,7 @@ angular.module('jamstash.page', ['jamstash.settings.service', 'jamstash.utils'])
             if (song.artist !== undefined && song.name !== undefined) {
                 title = utils.toHTML.un(song.artist) + " - " + utils.toHTML.un(song.name);
             } else {
-                title = 'Jamstash';
+                title = 'Kalimba Radio';
             }
             if (globals.settings.ScrollTitle) {
                 this.scrollTitle();
