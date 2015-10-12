@@ -6,13 +6,18 @@ tr.row td:first-child { border-left: thin solid black; }
 tr.row td:last-child { border-right: thin solid black; }
 
 </style>
-
-
+<!-- <script>
+var RestGet = function() {
+    $.ajax({
+    type: 'GET',
+    url: "/getToken"
+   // dataType: 'json',
+   
+});
+}
+</script> -->
 </head>
-<!-- <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
-    Your cart is empty
-</div>
- -->
+
 <div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0" id="template/ngCart/addtocart.html" style="padding-bottom:50px" >
 
     <table class="table table-striped ngCart cart table title"  cellspacing="0px" cellpading="50px" style="width: 500px"  >
@@ -51,12 +56,12 @@ tr.row td:last-child { border-right: thin solid black; }
             <td><span ng-click="ngCart.removeItemById(item.getId())">Remove</span></td>
             
         </tr>
-      <!--  <tr align="center"><button class="btn btn-primary" >proceedtocheckout</button></tr> -->
+   
         </tbody>
         
     </table>
-    
-    <a class="button" style = "right:30px" >Proceed to Payment</a>
+   
+ <a class="button" style = "right:30px" ng-click="sendToken()" >Proceed to Payment</a>
 </div>
 <style>
     .ngCart.cart span[ng-click] {

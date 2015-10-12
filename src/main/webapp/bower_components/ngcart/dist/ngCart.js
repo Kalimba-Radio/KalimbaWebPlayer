@@ -249,7 +249,7 @@ angular.module('ngCart', ['ngCart.directives'])
         item.prototype.setPrice = function(price){
             var priceFloat = parseFloat(price);
             if (priceFloat) {
-                if (priceFloat <= 0) {
+                if (priceFloat < 0) {
                     $log.error('A price must be over 0');
                 } else {
                     this._price = (priceFloat);
@@ -343,7 +343,7 @@ angular.module('ngCart', ['ngCart.directives'])
         }
     }])
 
-    .controller('CartController',['$scope', 'ngCart', function($scope, ngCart) {
+    .controller('CartController',['$scope', 'ngCart','$http',  function($scope, ngCart, $http) {
         $scope.ngCart = ngCart;
         
         
@@ -372,6 +372,21 @@ angular.module('ngCart', ['ngCart.directives'])
                	}
         };
         
+     $scope.sendToken = function(){
+    	 
+    	var total = $scope.ngCart.totalCost();
+    	var data = 'totalPrice='+total;
+    	 $http({
+    		  method: 'GET',
+    		  url: 'getToken?'+data
+    		}).then(function successCallback(response) {
+    		    // this callback will be called asynchronously
+    		    // when the response is available
+    		  }, function errorCallback(response) {
+    		    // called asynchronously if an error occurs
+    		    // or server returns response with an error status.
+    		  });
+     };
        
         
       $scope.$on("ngCart:change", function(){
