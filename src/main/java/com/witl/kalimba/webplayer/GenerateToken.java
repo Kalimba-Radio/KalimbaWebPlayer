@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
 public class GenerateToken {
 	ModelAndView modelAndView;
 	@RequestMapping(value = "getToken", method = RequestMethod.GET)
-	public void getToken(HttpServletRequest request,HttpServletResponse response) throws SAXException, IOException, ParserConfigurationException, URISyntaxException {
+	public ModelAndView getToken(HttpServletRequest request,HttpServletResponse response) throws SAXException, IOException, ParserConfigurationException, URISyntaxException {
 		System.out.println( request.getParameter("totalPrice"));
 		String price=request.getParameter("totalPrice");
 		System.out.println(price);
@@ -96,9 +96,9 @@ public class GenerateToken {
        // response.setHeader("Access-Control-Max-Age", "86400");
        // response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		System.out.println(request.getHeader("Access-Control-Request-Method"));
-		 response.sendRedirect("https://secure.3gdirectpay.com/pay.asp?ID="+node.getNodeValue());
+		// response.sendRedirect("https://secure.3gdirectpay.com/pay.asp?ID="+node.getNodeValue());
 		
-		
+		return new ModelAndView("sendtoken");
 		
 		
 		
@@ -108,23 +108,6 @@ public class GenerateToken {
 		
 	}
 	
-	/*
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		response.addHeader("Access-Control-Allow-Origin", "*");
-		
-		if (request.getHeader("Access-Control-Request-Method") != null && "OPTIONS".equals(request.getMethod())) {
-			System.out.println(request.getHeader("Access-Control-Request-Method"));
-			//LOG.trace("Sending Header....");
-			// CORS "pre-flight" request
-			response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//			response.addHeader("Access-Control-Allow-Headers", "Authorization");
-            response.addHeader("Access-Control-Allow-Headers", "Content-Type");
-			response.addHeader("Access-Control-Max-Age", "1");
-		}
-		
-		filterChain.doFilter(request, response);
-	}*/
-
+	
 
 }
