@@ -352,24 +352,13 @@ angular.module('ngCart', ['ngCart.directives'])
            		document.getElementById("testid").style.color="#888";
           		document.getElementById("dialogtest").style.width="0px";
            		document.getElementById("dialogtest").style.height="0px";
-           		document.getElementById("dialogtest").style.border="#fff";
-           		
-           
-           		//document.getElementsByClassName("tiptext").unbind('mouseover mouseout'); 
-           		
-           	}else{
-           		//document.getElementById("testid").style.color="green"; 
+           		document.getElementById("dialogtest").style.border="#fff";       		
+           	}else{           	
            		document.getElementById("dialogtest").style.width="50px";
            		document.getElementById("dialogtest").style.height="auto";
-           		document.getElementById("dialogtest").style.border="1px solid #39B54A";
-           		/*document.getElementByClassName("tiptext").addEventListener("mousemove",function() {
-           	    	 autoOpen: false;
-           	        $(this).children(".description").show();
-           	    }).mouseout(function() {
-           	        $(this).children(".description").hide();
-           	    });*/
+           		document.getElementById("dialogtest").style.border="1px solid #39B54A";           		
            	    		
-               	}
+               	}          	
         };
         
      $scope.sendToken = function(){
@@ -380,9 +369,13 @@ angular.module('ngCart', ['ngCart.directives'])
     		  method: 'GET',
     		  url: 'getToken?'+data
     		}).then(function successCallback(response) {
+    			console.log(response);
+    			var token = response.data;
+    			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
     		    // this callback will be called asynchronously
     		    // when the response is available
-    		  }, function errorCallback(response) {
+    		  }, function errorCallback(erresponse) {
+    			  console.log(erresponse);
     		    // called asynchronously if an error occurs
     		    // or server returns response with an error status.
     		  });
