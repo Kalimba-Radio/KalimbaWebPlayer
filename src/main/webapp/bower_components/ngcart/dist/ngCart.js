@@ -27,6 +27,9 @@ angular.module('ngCart', ['ngCart.directives'])
 
     }])
 
+    
+    
+    
     .service('ngCart', ['$rootScope', 'ngCartItem', 'store', function ($rootScope, ngCartItem, store) {
 
         this.init = function(){
@@ -112,6 +115,18 @@ angular.module('ngCart', ['ngCart.directives'])
             });
             return count;
         };
+        
+        //////////////////////////////
+        this.getItemId = function () {
+            var count ;
+            var items = this.getItems();
+            angular.forEach(items, function (item) {
+               count=  item.getId();
+            });
+            return items;
+        };
+        
+       
 
         this.getTotalUniqueItems = function () {
             return this.getCart().items.length;
@@ -343,8 +358,10 @@ angular.module('ngCart', ['ngCart.directives'])
         }
     }])
 
-    .controller('CartController',['$scope', 'ngCart','$http',  function($scope, ngCart, $http) {
+    .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location', function($scope, ngCart, $http,bsLoadingOverlayService,$location,ngCartItem,item,$rootScope) {
         $scope.ngCart = ngCart;
+        
+       
         
         
         var manageCartUI = function(){
@@ -361,17 +378,39 @@ angular.module('ngCart', ['ngCart.directives'])
                	}          	
         };
         
-     $scope.sendToken = function(){
+     $scope.sendToken = function($location){
     	 
     	var total = $scope.ngCart.totalCost();
-    	var data = 'totalPrice='+total;
+    //	var each= $scope.ngCart.getTotalItems();
+    	var items=  $scope.ngCart.getItemId();
+    	var details='';
+    	angular.forEach(items, function (item) {
+    		details=details+item.getId()+',';
+         });
+    	
+    	
+    	var data = 'totalPrice='+total;'itemsdetails='+items
     	 $http({
     		  method: 'GET',
     		  url: 'getToken?'+data
     		}).then(function successCallback(response) {
     			console.log(response);
     			var token = response.data;
-    			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
+    			$location.url ('https://secure.3gdirectpay.com/pay.asp?ID='+token);
+    			
+    			
+    			
+    			
+    			
+    			
+    			//window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
+    			
+    			$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+    				   console.log('start', evt, absNewUrl, absOldUrl);
+    				});
+    			$scope.$on('$locationChangeSuccess',function(evt, absNewUrl, absOldUrl) {
+    				   console.log('success', evt, absNewUrl, absOldUrl);
+    				});
     		    // this callback will be called asynchronously
     		    // when the response is available
     		  }, function errorCallback(erresponse) {
@@ -396,7 +435,7 @@ angular.module('ngCart', ['ngCart.directives'])
         manageCartUI();
         
         
-
+       
     }])
 
     .value('version', '1.0.0');
