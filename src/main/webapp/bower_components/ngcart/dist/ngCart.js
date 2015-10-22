@@ -1,9 +1,12 @@
 'use strict';
 
+angular.module('ngCart', ['ngCart.directives'])
+//angular.module('ngCart', ['ngCart.directives','ui.router'])
+ .config([function () {
 
-angular.module('ngCart', ['ngCart.directives','ui.router'])
+    }])
 
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    /*.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     	  //
     	  // For any unmatched url, redirect to /state1
     	  $urlRouterProvider.otherwise("/state1");
@@ -16,7 +19,7 @@ angular.module('ngCart', ['ngCart.directives','ui.router'])
     	      
     	    })
     	    
-    	}])
+    	}])*/
 
     .provider('$ngCart', function () {
         this.$get = function () {
