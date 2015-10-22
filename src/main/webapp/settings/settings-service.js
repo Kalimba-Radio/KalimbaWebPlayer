@@ -78,7 +78,7 @@ angular.module('jamstash.settings.service', [])
     this.SavedCollections = [];
     this.SavedGenres = [];
     this.Player1 = '#playdeck_1';
-    this.archiveUrl = 'https://archive.org/';
+    this.archiveUrl = 'http://archive.org/';
     this.ChangeLog = null;
     this.Messages = [];
 
