@@ -8,6 +8,8 @@ $(".tiptext").mouseover(function() {
 
 </script>
 
+
+
 </head>
 
 
@@ -18,6 +20,6 @@ $(".tiptext").mouseover(function() {
     </div>
     <div class ="col-md-6"  style="float:right;margin:auto;"><span style="color:#39B54A">{{ ngCart.getTotalItems() }}
         <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'item', 'other':'items'}" ></ng-pluralize></span>
-        <br />{{ ngCart.totalCost() | currency:"ZK " }}
+        <br />{{ ngCart.totalCost() | currency }}
     </div>
 </div>

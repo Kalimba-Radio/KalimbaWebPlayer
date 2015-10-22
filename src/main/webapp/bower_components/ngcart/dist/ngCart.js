@@ -1,18 +1,29 @@
 'use strict';
 
 
-angular.module('ngCart', ['ngCart.directives'])
+angular.module('ngCart', ['ngCart.directives','ui.router'])
 
-    .config([function () {
-
-    }])
+    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    	  //
+    	  // For any unmatched url, redirect to /state1
+    	  $urlRouterProvider.otherwise("/state1");
+    	  //
+    	  // Now set up the states
+    	  $stateProvider
+    	    .state('transaction', {
+    	      url: "/transaction",
+    	      templateUrl: "template/ngCart/transaction.html",
+    	      
+    	    })
+    	    
+    	}])
 
     .provider('$ngCart', function () {
         this.$get = function () {
         };
     })
 
-    .run(['$rootScope', 'ngCart','ngCartItem', 'store', function ($rootScope, ngCart, ngCartItem, store) {
+    .run(['$rootScope', 'ngCart','ngCartItem', 'store','$location', function ($rootScope, ngCart, ngCartItem, store,$location) {
 
         $rootScope.$on('ngCart:change', function(){
             ngCart.$save();
@@ -214,7 +225,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
     }])
 
-    .factory('ngCartItem', ['$rootScope', '$log', function ($rootScope, $log) {
+    .factory('ngCartItem', ['$rootScope', '$log', '$location' ,function ($rootScope, $log,$location) {
 
         var item = function (id, name, price, quantity, data,img) {
             this.setId(id);
@@ -358,7 +369,7 @@ angular.module('ngCart', ['ngCart.directives'])
         }
     }])
 
-    .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location', function($scope, ngCart, $http,bsLoadingOverlayService,$location,ngCartItem,item,$rootScope) {
+    .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location', function($scope, ngCart, $http,bsLoadingOverlayService,$location,ngCartItem,item,$rootScope,$stateProvider) {
         $scope.ngCart = ngCart;
         
        
@@ -378,7 +389,7 @@ angular.module('ngCart', ['ngCart.directives'])
                	}          	
         };
         
-     $scope.sendToken = function($location){
+     $scope.sendToken = function(){
     	 
     	var total = $scope.ngCart.totalCost();
     //	var each= $scope.ngCart.getTotalItems();
@@ -389,30 +400,23 @@ angular.module('ngCart', ['ngCart.directives'])
          });
     	
     	
-    	var data = 'totalPrice='+total;'itemsdetails='+items
+    	var data = 'totalPrice='+total ;
     	 $http({
     		  method: 'GET',
-    		  url: 'getToken?'+data
+    		  url: 'getToken?'+data,
+    		  params: {'itemsdetails':details}
     		}).then(function successCallback(response) {
     			console.log(response);
     			var token = response.data;
-    			$location.url ('https://secure.3gdirectpay.com/pay.asp?ID='+token);
     			
     			
-    			
-    			
-    			
-    			
-    			//window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
-    			
-    			$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-    				   console.log('start', evt, absNewUrl, absOldUrl);
-    				});
-    			$scope.$on('$locationChangeSuccess',function(evt, absNewUrl, absOldUrl) {
-    				   console.log('success', evt, absNewUrl, absOldUrl);
-    				});
-    		    // this callback will be called asynchronously
-    		    // when the response is available
+    		
+
+    			      //  $location.path("www.google.com");
+    			       
+    			//$location.path()==('www.google.com');
+    			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
+    		    
     		  }, function errorCallback(erresponse) {
     			  console.log(erresponse);
     		    // called asynchronously if an error occurs
