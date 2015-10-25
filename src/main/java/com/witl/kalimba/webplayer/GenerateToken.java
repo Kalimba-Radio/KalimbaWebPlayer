@@ -37,6 +37,8 @@ public class GenerateToken {
 
 	@Autowired
 	private PaymentDao paymentDao;
+	@Autowired
+	private TransactionDao transactionDao;
 
 	private String tokenId;
 	private String listOfSongs;
@@ -72,8 +74,8 @@ public class GenerateToken {
 				+ "</PaymentAmount>"
 				+ "<PaymentCurrency>ZMK</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>www.kalimbaradio.com/transaction</RedirectURL>"
-				+ "<BackURL>www.kalimbaradio.com/getTransaction</BackURL>"
+				+ "<RedirectURL>http://localhost:8080/KalimbaWebPlayer/getTransaction</RedirectURL>"
+				+ "<BackURL>www.kalimbaradio.com</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
 				+ "</Transaction>"
@@ -126,12 +128,32 @@ public class GenerateToken {
 //	@ResponseBody
 	public ModelAndView verifyTransaction(HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) {
-		String tnsId = request.getParameter("paymenttokenid");
+		
+		System.out.println("Iinside payment returns");
+		
+		
+		String tnsId = request.getParameter("TransID");
+		
+		String PnrID=request.getParameter("PnrID");
+		String CCDapproval=request.getParameter("CCDapproval");
+		String companyRef=request.getParameter("CompanyRef");
+		
+		
+		System.out.println(tnsId+"=="+PnrID+"==="+CCDapproval);
 		/*
 		 * session.getParameter("emailId");
 		 * request.getParameter("paymentstatuscode");
 		 * request.getParameter("paymenttimestamp");
+		 * 
 		 */
+		
+		Transaction transaction=new Transaction();
+		transaction.setTnsId(tnsId);
+		transaction.setPnrId(PnrID);
+        transaction.setCompanyRef(companyRef);	
+        transaction.setCcDapproval(CCDapproval);
+        transactionDao.save(transaction);
+        
 		Payment paymentDetails = paymentDao.getById(tokenId);
 		String token = paymentDetails.getTokenid();
 		String status = paymentDetails.getCreatetokenstatus();
