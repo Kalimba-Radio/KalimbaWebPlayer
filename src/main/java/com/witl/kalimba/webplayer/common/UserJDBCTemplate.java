@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.common;
 /*@auther : Ambarish Kumar
  * 
  */
@@ -9,8 +9,8 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.witl.kalimba.webplayer.User;
-import com.witl.kalimba.webplayer.UserMapper;
+import com.witl.kalimba.webplayer.common.User;
+import com.witl.kalimba.webplayer.common.UserMapper;
 
 public class UserJDBCTemplate {
    private JdbcTemplate jdbcTemplateObject;
@@ -46,6 +46,7 @@ public class UserJDBCTemplate {
       String SQL = "select * from USERS where email = ?";
       User user = jdbcTemplateObject.queryForObject(SQL, 
                         new Object[]{email}, new UserMapper());
+      
       return user;
    }
 

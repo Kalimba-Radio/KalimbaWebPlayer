@@ -5,20 +5,85 @@ tr.bottom td { border-bottom: 1px solid #DDDDDD; }
 tr.row td:first-child { border-left: thin solid black; }
 tr.row td:last-child { border-right: thin solid black; }
 
-</style>
-<!-- <script>
-var RestGet = function() {
-    $.ajax({
-    type: 'GET',
-    url: "/getToken"
-   // dataType: 'json',
-   
-});
+
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("http://i.stack.imgur.com/MnyxU.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
-</script> -->
+
+
+</style>
+<!-- <script src="bower_components/angular-loading-overlay/dist/angular-loading-overlay.js"></script> -->
+<script type="text/javascript">
+function onReady() {
+
+    var intervalID = window.setInterval(checkReady, 5000);
+
+    
+    
+    function checkReady() {
+       
+            window.clearInterval(intervalID);
+            callback.call(this);
+        
+    }
+
+    var scope = angular
+	.element(
+			document
+					.getElementById("sendToken"))
+	.scope();
+    scope.$apply(function() {
+    scope.sendToken();
+    });
+}
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+/* onReady(function () {
+    show("template/ngCart/addtocart.html", true);
+    show('loading', false);
+}); */
+
+
+
+
+</script>
+
+<style>
+        #page{
+            diplay:none;
+        }
+        #laoding{
+            display:block;
+        }
+    </style>
+    <script>
+        function myFunction()
+        {
+            document.getElementById("page").style.display = "block";
+            document.getElementById("loading").style.diplay = "none";
+        }
+    </script>
+
+ 
 </head>
 
-<div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0" id="template/ngCart/addtocart.html" style="padding-bottom:50px" >
+
+
+<div class="table-responsive col-lg-12"    ng-show="ngCart.getTotalItems() >= 0" id="template/ngCart/addtocart.html" style="padding-bottom:50px"  >
 
     <table class="table table-striped ngCart cart table title"  cellspacing="0px" cellpading="50px" style="width: 500px"  >
 
@@ -56,13 +121,18 @@ var RestGet = function() {
             <td><span ng-click="ngCart.removeItemById(item.getId())">Remove</span></td>
             
         </tr>
-   
+     
         </tbody>
         
     </table>
+    <!-- <form action="/getToken">
+    <input type="submit" value="submit"> 
+    </form>-->
    
- <a class="button" style = "right:30px" ng-click="sendToken()" >Proceed to Payment</a>
+  <a id="sendToken" class="button" style = "right:30px"   onclick="onReady()"  >Proceed to Payment</a> 
 </div>
+
+
 <style>
     .ngCart.cart span[ng-click] {
         cursor: pointer;

@@ -62,6 +62,13 @@
 		<servlet-name>SpringDispatcher</servlet-name>
 		<url-pattern>/getToken</url-pattern>
 	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>SpringDispatcher</servlet-name>
+		<url-pattern>/getTransaction</url-pattern>
+	</servlet-mapping>
+	
+	
 	<!-- <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> <url-pattern>/uploadController</url-pattern> 
 		</servlet-mapping> <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> 
 		<url-pattern>/playerController</url-pattern> </servlet-mapping> <servlet-mapping> 
