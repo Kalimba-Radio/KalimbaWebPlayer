@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.common;
 
 /*@auther : Ambarish Kumar
  * 
@@ -7,28 +7,8 @@ package com.witl.kalimba.webplayer;
 import java.util.Properties;
 
 import javax.sql.DataSource;
- 
 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-import com.witl.kalimba.webplayer.UserJDBCTemplate;
-
-
-
-
-
-
+import com.witl.kalimba.webplayer.common.UserJDBCTemplate;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,7 +100,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     Properties hibernateProperties() {
        return new Properties() {
           {
-             setProperty("hibernate.hbm2ddl.auto", "create");
+             setProperty("hibernate.hbm2ddl.auto", "save");
              setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
              setProperty("hibernate.globally_quoted_identifiers", "true");
              setProperty("hibernate.show_sql", "true");

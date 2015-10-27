@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.controller;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -31,10 +31,14 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import com.witl.kalimba.webplayer.common.Payment;
+import com.witl.kalimba.webplayer.common.Transaction;
+import com.witl.kalimba.webplayer.dao.PaymentDao;
+import com.witl.kalimba.webplayer.dao.TransactionDao;
+
 @Controller
 @ComponentScan({ "com.witl.kalimba.webplayer" })
 public class GenerateToken {
-
 	@Autowired
 	private PaymentDao paymentDao;
 	@Autowired
@@ -74,7 +78,7 @@ public class GenerateToken {
 				+ "</PaymentAmount>"
 				+ "<PaymentCurrency>ZMK</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>http://localhost:8080/KalimbaWebPlayer/getTransaction</RedirectURL>"
+				+ "<RedirectURL>http://localhost:8085/KalimbaWebPlayer/getTransaction</RedirectURL>"
 				+ "<BackURL>www.kalimbaradio.com</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
@@ -185,5 +189,6 @@ public class GenerateToken {
         }		
 		return songIdList;
 	}
+
 
 }

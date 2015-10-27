@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.common;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
