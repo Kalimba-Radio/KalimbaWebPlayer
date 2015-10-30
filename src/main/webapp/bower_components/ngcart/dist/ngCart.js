@@ -26,7 +26,7 @@ angular.module('ngCart', ['ngCart.directives'])
         };
     })
 
-    .run(['$rootScope', 'ngCart','ngCartItem', 'store','$location', function ($rootScope, ngCart, ngCartItem, store,$location) {
+    .run(['$rootScope', 'ngCart','ngCartItem', 'store','$location','globals', function ($rootScope, ngCart, ngCartItem, store,$location,globals) {
 
         $rootScope.$on('ngCart:change', function(){
             ngCart.$save();
@@ -372,13 +372,15 @@ angular.module('ngCart', ['ngCart.directives'])
         }
     }])
 
-    .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location', function($scope, ngCart, $http,bsLoadingOverlayService,$location,ngCartItem,item,$rootScope,$stateProvider) {
+    .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location','globals', function($scope, ngCart, $http,$rootScope,bsLoadingOverlayService,$location,ngCartItem,item,$stateProvider,globals) {
         $scope.ngCart = ngCart;
+        //$scope.user=globals.user;
+        //$rootScope;
         
-       
-        
+        //alert( $rootScope.user.name);
         
         var manageCartUI = function(){
+        	 alert( $rootScope.user.name);
           	if($scope.ngCart.getItems()<=0){
            		document.getElementById("testid").style.color="#888";
           		document.getElementById("dialogtest").style.width="0px";
@@ -393,7 +395,8 @@ angular.module('ngCart', ['ngCart.directives'])
         };
         
      $scope.sendToken = function(){
-    	 
+    	 alert( $rootScope.user.name);
+    	 alert( $rootScope.user.email+","+$rootScope.user.id);
     	var total = $scope.ngCart.totalCost();
     //	var each= $scope.ngCart.getTotalItems();
     	var items=  $scope.ngCart.getItemId();
