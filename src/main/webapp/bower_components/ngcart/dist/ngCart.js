@@ -380,7 +380,7 @@ angular.module('ngCart', ['ngCart.directives'])
         //alert( $rootScope.user.name);
         
         var manageCartUI = function(){
-        	 alert( $rootScope.user.name);
+        	
           	if($scope.ngCart.getItems()<=0){
            		document.getElementById("testid").style.color="#888";
           		document.getElementById("dialogtest").style.width="0px";
@@ -397,6 +397,7 @@ angular.module('ngCart', ['ngCart.directives'])
      $scope.sendToken = function(){
     	 alert( $rootScope.user.name);
     	 alert( $rootScope.user.email+","+$rootScope.user.id);
+    	 var email=$rootScope.user.email;
     	var total = $scope.ngCart.totalCost();
     //	var each= $scope.ngCart.getTotalItems();
     	var items=  $scope.ngCart.getItemId();
@@ -410,7 +411,7 @@ angular.module('ngCart', ['ngCart.directives'])
     	 $http({
     		  method: 'GET',
     		  url: 'getToken?'+data,
-    		  params: {'itemsdetails':details}
+    		  params: {'itemsdetails':details, 'email':email}
     		}).then(function successCallback(response) {
     			console.log(response);
     			var token = response.data;

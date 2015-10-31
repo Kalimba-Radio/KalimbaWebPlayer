@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -55,6 +56,8 @@ public class GenerateToken {
 			URISyntaxException {
 
 		String items = (String) request.getParameter("itemsdetails");
+		System.out.println(request.getParameter("email"));
+		String email=request.getParameter("email");
 		listOfSongs = items;
 
 		System.out.println(request.getParameter("totalPrice"));
@@ -78,7 +81,7 @@ public class GenerateToken {
 				+ "</PaymentAmount>"
 				+ "<PaymentCurrency>ZMK</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>http://localhost:8085/KalimbaWebPlayer/getTransaction</RedirectURL>"
+				+ "<RedirectURL>http://localhost:8080/KalimbaWebPlayer/getTransaction</RedirectURL>"
 				+ "<BackURL>www.kalimbaradio.com</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
@@ -116,7 +119,7 @@ public class GenerateToken {
 		Payment payment = new Payment();
 		payment.setAmonut(pricefloat);
 		payment.setCreatetokenstatus(check.getNodeValue());
-		payment.setEmailid("dipti.prakash@kalimbaradio.com");
+		payment.setEmailid(email);
 		payment.setSongidstring(items);
 		payment.setTokenid(tokenId);
 
@@ -144,18 +147,14 @@ public class GenerateToken {
 		
 		
 		System.out.println(tnsId+"=="+PnrID+"==="+CCDapproval);
-		/*
-		 * session.getParameter("emailId");
-		 * request.getParameter("paymentstatuscode");
-		 * request.getParameter("paymenttimestamp");
-		 * 
-		 */
+		
 		
 		Transaction transaction=new Transaction();
 		transaction.setTnsId(tnsId);
 		transaction.setPnrId(PnrID);
         transaction.setCompanyRef(companyRef);	
         transaction.setCcDapproval(CCDapproval);
+        transaction.setDate(new Date());
         transactionDao.save(transaction);
         
 		Payment paymentDetails = paymentDao.getById(tokenId);
