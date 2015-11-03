@@ -446,22 +446,28 @@ angular.module('JamStash')
     //save users
     
     $scope.saveUser=function (response) {
-    	globals.user.name = response.name;
+    	$rootScope.user.name = response.name;
+    	$rootScope.user.id = response.id;
 		//alert(globals.user.name);
-		globals.user.email = response.email;
-		globals.user.firstName = response.first_name;
-		globals.user.lastName = response.last_name;
-		globals.user.gender = response.gender;
-		globals.user.birthday =response.birthday;
-		globals.user.location = response.location ? response.location.name
+    	if(typeof response.email ==='undefined' || response.email ===''){
+    		
+    		$rootScope.user.email = response.id+"@facebook.com";
+        }else{
+        	$rootScope.user.email = response.email;
+        }
+    	$rootScope.user.firstName = response.first_name;
+    	$rootScope.user.lastName = response.last_name;
+    	$rootScope.user.gender = response.gender;
+    	$rootScope.user.birthday =response.birthday;
+    	$rootScope.user.location = response.location ? response.location.name
 				: '';
-		globals.user.hometown = response.hometown ? response.hometown.name
+    	$rootScope.user.hometown = response.hometown ? response.hometown.name
 				: '';
 		//document.forms[0].bio.value = response.bio;
-		globals.user.relationship = response.relationship_status;
-		globals.user.timezone = response.timezone;
-		globals.user.userType = 'A';
-		globals.user.providerId = "1";
+    	$rootScope.user.relationship = response.relationship_status;
+    	$rootScope.user.timezone = response.timezone;
+    	$rootScope.user.userType = 'A';
+    	$rootScope.user.providerId = "1";
     };
     
     /* Launch on Startup */
