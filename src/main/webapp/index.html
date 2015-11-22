@@ -13,6 +13,8 @@
 <link href="images/favicon_webplayer.ico" rel="shortcut icon" />
 <link rel="icon" href="images/favicon_webplayer.png" sizes="48x48" />
 <link rel="icon" href="images/favicon_webplayer.png" sizes="32x32" />
+<link href="assets/css/template.css" rel="stylesheet">
+
 <!-- build:css(.) styles/vendor.min.css -->
 <!-- bower:css -->
 <link rel="stylesheet"
@@ -32,7 +34,7 @@
 	width: auto;
 	height: auto;
 	color: 5B5B4E;
-	right: 300px;
+	right: 330px;
 	top: 10px;
 }
 
@@ -162,7 +164,7 @@
 
 			window.fbAsyncInit = function() {
 				FB.init({
-					appId : '257684847772401',
+					appId : '441661862708031',
 					cookie : true, // enable cookies to allow the server to access 
 					// the session
 					xfbml : true, // parse social plugins on this page
@@ -249,10 +251,11 @@
 												var scope = angular
 												.element(
 														document
-																.getElementById("loginElement"))
+																.getElementById("template/ngCart/addtocart.html"))
 												.scope();
 												scope.$apply(function() {
-												scope.saveUser(response);
+												//scope.saveUser(response);
+													scope.ngCart.empty();
 												});
 
 											});
@@ -337,10 +340,12 @@
 									var scope = angular
 											.element(
 													document
-															.getElementById("loginElement"))
+															.getElementById("template/ngCart/addtocart.html"))
 											.scope();
 									scope.$apply(function() {
-										scope.saveUser(response);
+										alert(scope.ngCart.totalCost());
+									
+										//scope.saveUser(response);
 									});
 									//saveUser(response);
 									//alert(document.forms[0].location.value);
@@ -450,9 +455,15 @@
 		<script src="queue/queue.js"></script>
 		<script src="common/filters.js"></script>
 		<script src="common/directives.js"></script>
+		
+		<!-- top navi -->
+    <script type="text/javascript" src="assets/js/bootstrap-3.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.isotope.min.js?v=1.5.26"></script>
+    <script type="text/javascript" src="assets/js/jquery.singlePageNav.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
 		<!-- endbuild -->
 		<div id="container">
-			<div id="header">
+		 <!-- 	<div id="header">
 				<div id="messages">
 					<span ng-attr-id="{{ 'msg_' + $index }}" class="message"
 						ng-repeat="item in Messages track by $index" ng-bind-html="item"></span>
@@ -460,34 +471,75 @@
 				<div id="loading"></div>
 				<a id="jslogo" title="Kalimba Radio" class="showQueue" href=""></a>
 
-				<!-- <a id="sslogo" target="_blank" ng-show="settings.Server" ng-href="{{settings.Server}}" title="{{settings.Server}}"></a>-->
+				
 				<a target="_blank" class="Main-Menu" title="About Us"  href="https://www.kalimbaradio.com/about">About Us</a>
 				
 				<fb:login-button id="sslogo" size="medium" scope="email"
 					onlogin="checkLoginState('U');"></fb:login-button>
 				<div id="ssname" href=""></div>
-				<!--   <div id="globalactions"> <a href="" class="button" ng-click="toggleQueue()" title="Pin Queue">Queue</a> </div> -->
-				<!--   <div id="loginElement"></div> -->
+				
 				<div align="right" class="tiptext cartstyle" style="color: 5B5B4E"
 					id="testid">
 					<div class="description boxshadow" id="dialogtest">
 						<div id="loginElement"></div>
 						<ngcart-cart></ngcart-cart>
-						<!--  <ngcart-checkout service="http" settings="{ url:'#/checkout' }">Checkout</ngcart-checkout>  -->
+				
 					</div>
 					<ngcart-summary></ngcart-summary>
 
 				</div>
 
 
-				<!--   <div id="nav">
-                <ul class="tabs">
-                    <li><a href="#/library" class="first" id="action_Library" title="Library" ng-class="{'active': isActive('/library')}"><img src="images/headphones_gd_16x14.png" /></a></li>
-                    <li><a href="#/archive" id="action_Archive" class="" title="Archive.org - Live Music Archive" ng-class="{'active': isActive('/archive')}"><img src="images/archive_gd_16x16.png" /></a></li>
-                    <li><a href="#/settings" id="action_Settings" class="last" title="Settings" ng-class="{'active': isActive('/settings')}"><img src="images/cog_16x16.png" /></a></li>
-                </ul>
-            </div>-->
-			</div>
+				
+			</div>-->
+			 <header id="header" class="site-header">
+        <nav id="topbar" class="site-topbar visible-lg visible-md">
+          <div class="">
+            <div class="row">
+              <div class="col-sm-6">&nbsp;&nbsp;Questions? Email us at:<a href="mailto:info@kalimbaradio.com">info@kalimbaradio.com</a></div>
+              <div class="social-links col-sm-6">
+                <a href="https://www.facebook.com/kalimbamedia"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/KalimbaMedia"><i class="fa fa-twitter"></i></a>
+                <a href="http://goo.gl/UKiiBU"><img src="images/android.png"  alt="Kalimba Radio Free African music streaming"></a> 
+                <a href="http://goo.gl/TxGX2C"><img src="images/blackberryicon.png"  alt="Kalimba Radio Free African music streaming"></a>
+                &nbsp; <!-- <font color="39b54a">0 Items &nbsp;&nbsp;</font> -->
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <nav id="navbar" class="site-navbar navbar navbar-static-top" role="navigation">
+          <div class="">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+              </button>
+              <h1 class="navbar-brand"><a href="index.html"><img src="images/kalimba_logo-01.png"  alt="Kalimba Radio Free African music streaming"></a></h1>
+            </div>
+            <div align="right" class="tiptext cartstyle" style="color: 5B5B4E"
+					id="testid">
+					<div class="description boxshadow" id="dialogtest">
+						<div id="loginElement"></div>
+						<ngcart-cart></ngcart-cart>
+				
+					</div>
+					<ngcart-summary></ngcart-summary>
+
+				</div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul id="navigation" class="nav navbar-nav navbar-right">
+                 <li><a href="http://kalimbaradio.com">Listen Now</a></li>
+                 <li><a href="#header">Submit Content</a></li>
+                <li><a href="http://blog.kalimbaradio.com">Blog</a></li>
+                <li><a href="contact.html">Contact Us &nbsp;&nbsp;</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+			
 			<div id="content">
 				<!-- Main -->
 				<div ng-view=""></div>
@@ -511,15 +563,16 @@
             <div class="submit"><img src="images/comment_stroke_gl_12x11.png" /><input type="text" id="ChatMsg" class="chat" title="Hit [Enter] to Post" /></div>
             -->
 			</div>
-			<div id="SideBar-Ads">
-			<div class="center">
+			<!-- <div id="SideBar-Ads"> -->
+			<!--  <div class="center">
 								<a href="https://www.ticketriver.com/event/17427" target="_blank" title="KalimbaRadio Presents OC Osilliation"><img class="tr-event-img" alt="Event's image" src="https://d1d6g07qo35lq3.cloudfront.net/images/event/17427/event447287.JPG"></a>
 							
 			<link rel="stylesheet" type="text/css" href="https://www.ticketriver.com/styles/widget.css"/> <div class="ticketriver"><a href="https://www.ticketriver.com/event/17427" target="_blank" title="KalimbaRadio Presents OC Osilliation"><img src="https://www.ticketriver.com/images/BuyTicketsButton_orange.gif" border="0"/></a></div><img src="https://www.ticketriver.com/eventWidgetBeacon?id=MTc0Mjc=" style="display:none;"/>
-			</div>
+			</div>-->
+			<!-- <div class="center"><a href="http://feeds.feedburner.com/kalimbaradio/fAWO" title="Subscribe to my feed" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon32x32.png" alt="" style="border:0"/></a><a href="http://feeds.feedburner.com/kalimbaradio/fAWO" title="Subscribe to my feed" rel="alternate" type="application/rss+xml">Subscribe in a reader</a></div>
 			<div class="center">
 			  <div class="ticketriver"><a href="https://www.gofundme.com/mandelaoverlook" target="_blank" title="Build a Nelson Mandela Memorial"><img src="http://s14.postimg.org/mg9775za9/aaa_300x250_2.jpg" border="0"/></a></div>
-			</div>
+			</div> -->
 			<!-- <img src="images/Ads250X200.png"/> -->
 			<!-- <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 Kalimba_top
@@ -532,7 +585,7 @@ Kalimba_top
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script> -->
 			
-			</div>
+			<!-- </div> -->
 			<!-- Player -->
 			<div ng-include="" src="'player/player.html'"
 				ng-controller="PlayerController"></div>
