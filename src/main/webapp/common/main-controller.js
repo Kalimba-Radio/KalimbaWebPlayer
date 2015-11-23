@@ -1,6 +1,6 @@
 angular.module('JamStash')
-.controller('AppController', ['$scope', '$rootScope', '$document', '$window', '$location', '$cookieStore', '$http', 'utils', 'globals', 'model', 'notifications', 'player', 'persistence', 'Page',
-    function($scope, $rootScope, $document, $window, $location, $cookieStore, $http, utils, globals, model, notifications, player, persistence, Page) {
+.controller('AppController', ['$scope', '$rootScope', '$document', '$window', '$location', '$cookieStore', '$http', 'utils', 'globals', 'model', 'notifications', 'player', 'persistence', 'Page','$timeout',
+    function($scope, $rootScope, $document, $window, $location, $cookieStore, $http, utils, globals, model, notifications, player, persistence, Page, $timeout) {
     'use strict';
 
     $rootScope.settings = globals.settings;
@@ -311,7 +311,7 @@ angular.module('JamStash')
     $rootScope.getSplitPosition = function (scope, elm) {
         window.alert(elm.getBoundingClientRect().left);
     };
-    $scope.download = function (id) {
+    $scope.download = function (id, counter) {
         $.ajax({
             url: globals.BaseURL() + '/getUser.view?' + globals.BaseParams() + '&username=' + globals.settings.Username,
             method: 'GET',
@@ -322,7 +322,10 @@ angular.module('JamStash')
                    // notifications.updateMessage('Error: ' + data["subsonic-response"].error.message, true);
                 } else {
                     if (data["subsonic-response"].user.downloadRole === true) {
-                        $window.location.href = globals.BaseURL() + '/download.view?' + globals.BaseParams() + '&id=' + id;
+                    	
+                        $timeout(function(){
+                        	$window.location.href = globals.BaseURL() + '/download.view?' + globals.BaseParams() + '&id=' + id;},counter*2000);
+                        
                     } else {
                         notifications.updateMessage('You do not have permission to Download', true);
                     }

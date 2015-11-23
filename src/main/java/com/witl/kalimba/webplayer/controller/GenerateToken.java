@@ -1,13 +1,23 @@
 package com.witl.kalimba.webplayer.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -47,6 +57,7 @@ public class GenerateToken {
 
 	private String tokenId;
 	private String listOfSongs;
+	private Payment payment;
 
 	@RequestMapping(value = "/getToken", method = RequestMethod.GET)
 	@ResponseBody
@@ -116,7 +127,7 @@ public class GenerateToken {
 		System.out.println("check success or failure =" + check.getNodeValue());
 		tokenId = node.getNodeValue();
 
-		Payment payment = new Payment();
+		payment = new Payment();
 		payment.setAmonut(pricefloat);
 		payment.setCreatetokenstatus(check.getNodeValue());
 		payment.setEmailid(email);
@@ -131,10 +142,10 @@ public class GenerateToken {
 
 	}
 
-	@RequestMapping(value = "/getTransaction", method = RequestMethod.GET)
+	@RequestMapping(value = "/getTransaction", method = RequestMethod.POST)
 //	@ResponseBody
 	public ModelAndView verifyTransaction(HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) {
+			HttpServletResponse response, HttpSession session) throws IOException {
 		
 		System.out.println("Iinside payment returns");
 		
@@ -155,27 +166,10 @@ public class GenerateToken {
         transaction.setCompanyRef(companyRef);	
         transaction.setCcDapproval(CCDapproval);
         transaction.setDate(new Date());
-        transactionDao.save(transaction);
-        
-		Payment paymentDetails = paymentDao.getById(tokenId);
-		String token = paymentDetails.getTokenid();
-		String status = paymentDetails.getCreatetokenstatus();
+        transaction.setPayment(payment);
+        transactionDao.save(transaction);		
 
-		if (token.equals(tnsId) && status.equals("Transaction created")) {// if
-			List songIdList=getSongList(listOfSongs);														// there
-																			// are
-																			// any
-																			// extra
-																			// condition
-																			// we
-																			// put
-																			// here
-			// go for rest call
-		} else {
-			return new ModelAndView("failure");
-		}
-
-		return new ModelAndView("success");
+		return new ModelAndView("index");
 
 	}
 	
@@ -188,6 +182,9 @@ public class GenerateToken {
         }		
 		return songIdList;
 	}
+	
+
+
 
 
 }

@@ -48,11 +48,11 @@ angular.module('jamstash.settings.service', [])
         ApiVersion: "1.6.0",
         AutoPlaylists: "",
         AutoPlaylistSize: 25,
-        AutoAlbumSize: 15,
+        AutoAlbumSize: 40,
         // General
         HideAZ: false,
         ScrollTitle: true,
-        NotificationSong: true,
+        NotificationSong: false,
         NotificationNowPlaying: false,
         SaveTrackPosition: false,
         ForceFlash: false,
