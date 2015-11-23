@@ -374,10 +374,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
     .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location','globals', function($scope, ngCart, $http,$rootScope,bsLoadingOverlayService,$location,ngCartItem,item,$stateProvider,globals) {
         $scope.ngCart = ngCart;
-        //$scope.user=globals.user;
-        //$rootScope;
-        
-        //alert( $rootScope.user.name);
+        $scope.token="ttttt";
         
         var manageCartUI = function(){
         	
@@ -415,6 +412,7 @@ angular.module('ngCart', ['ngCart.directives'])
     		}).then(function successCallback(response) {
     			console.log(response);
     			var token = response.data;
+    			$scope.token=token;
     			
     			
     		

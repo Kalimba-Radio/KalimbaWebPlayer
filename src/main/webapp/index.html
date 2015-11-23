@@ -91,6 +91,57 @@
 			value="" />
 
 		<div id="fb-root"></div>
+			
+			 <script>
+			    window.onload = function () { 
+				    			 
+				 var tokenId=get('TransID');
+				 var PnrID=get('PnrID');
+				 var CCDapproval=get('CCDapproval');
+				 var CompanyRef=get('CompanyRef');	
+				 if(CCDapproval !==undefined && PnrID !==undefined)
+				 {
+					 downloadSong();
+					setTimeout(function(){alert("dipu")},50000);
+					saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef);
+					 }
+				       
+				 				
+	          }
+			 
+  
+		 function get(name){
+		
+			 if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+			 return decodeURIComponent(name[1]);
+			 }
+
+     function downloadSong(){
+    	 var scopeCart = angular.element(document.getElementById("template/ngCart/addtocart.html")).scope();
+		 //setTimeout(function(){alert(scopeCart.token)},50000);			 
+		 var scopeMain = angular.element(document.getElementById("loginElement")).scope();
+		 scopeCart.$apply(function() {			
+			 var items=  scopeCart.ngCart.getItemId();
+			 var i=0;
+			 angular.forEach(items, function (item) {
+		    		var id=item.getId();
+		    		//alert(id);
+		    		scopeMain.download(id, i);
+		    		i++;
+		         }); 
+			 scopeCart.ngCart.empty();			
+		
+		 });       
+         }
+
+function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
+	// document.forms[0].method = 'post';	
+	 document.forms[0].action = 'getTransaction?TransID='+tokenId+'&PnrID='+PnrID+'&CCDapproval='+CCDapproval+'&CompanyRef='+CompanyRef;
+	document.forms[0].submit();	
+}
+
+		 
+			</script>
 		<script>
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
@@ -98,7 +149,7 @@
 					return;
 				js = d.createElement(s);
 				js.id = id;
-				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=257684847772401";
+				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=441961949344689";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
@@ -130,6 +181,8 @@
 			ga('send', 'pageview');
 
 			function checkLoginState(userType) {
+				//var var1=$scope.var1;
+				alert(var1);
 				//alert("userType=" + userType);
 				FB.login(function(response) {
 					statusChangeCallback(response, userType);
@@ -140,6 +193,8 @@
 			}
 
 			function statusChangeCallback(response, userType) {
+				var var1=$scope.var1;
+				alert(var1);
 				console.log('statusChangeCallback');
 				console.log(response);
 				console.log(userType);
@@ -184,6 +239,7 @@
 				//alert("check param" + userType);
 				FB
 						.getLoginStatus(function(response) {
+							var var1=$scope.var1;
 							var sessionMail = document.forms[0].sessionEmail.value;
 							//var userType = document.forms[0].userType.value;
 							//if (sessionMail != "") {
@@ -247,11 +303,11 @@
 
 												//document.forms[0].action="/U";
 												var scope = angular
-												.element(
-														document
-																.getElementById("loginElement"))
-												.scope();
+												.element(document.getElementById("loginElement")).scope();
 												scope.$apply(function() {
+												//var cost=scope.ngCart.totalCost();
+												//alert(cost);
+												//	scope.download('465');
 												scope.saveUser(response);
 												});
 
@@ -275,6 +331,7 @@
 			// successful.  See statusChangeCallback() for when this call is made.
 
 			function testAPI(userType) {
+				var var1=$scope.var1;
 
 				console.log('Welcome!  Fetching your information.... ');
 
@@ -340,7 +397,10 @@
 															.getElementById("loginElement"))
 											.scope();
 									scope.$apply(function() {
-										scope.saveUser(response);
+										//var cost=scope.ngCart.totalCost();
+										//alert(cost);
+										//scope.download('465')
+										//scope.saveUser(response);
 									});
 									//saveUser(response);
 									//alert(document.forms[0].location.value);
@@ -452,6 +512,7 @@
 		<script src="common/directives.js"></script>
 		<!-- endbuild -->
 		<div id="container">
+		
 			<div id="header">
 				<div id="messages">
 					<span ng-attr-id="{{ 'msg_' + $index }}" class="message"
@@ -473,7 +534,7 @@
 					<div class="description boxshadow" id="dialogtest">
 						<div id="loginElement"></div>
 						<ngcart-cart></ngcart-cart>
-						<!--  <ngcart-checkout service="http" settings="{ url:'#/checkout' }">Checkout</ngcart-checkout>  -->
+						
 					</div>
 					<ngcart-summary></ngcart-summary>
 

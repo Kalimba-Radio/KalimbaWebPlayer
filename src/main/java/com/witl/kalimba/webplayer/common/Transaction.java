@@ -4,9 +4,14 @@ package com.witl.kalimba.webplayer.common;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -15,21 +20,34 @@ import org.hibernate.annotations.Type;
 @Table
 public class Transaction {
     @Id
+    private String pnrId;
 	private String tnsId;
-	private String pnrId;
+	
 	private String ccDapproval;
 	private String companyRef;
 	@Column
 	@Type(type="date")
 	private Date date;
+	//private String tokenid;
+	
+	 @OneToOne(targetEntity = Payment.class)
+	  @JoinColumn(name = "tokenid", referencedColumnName = "tokenid")	
+	private Payment payment;
 	
 	
+	public Payment getPayment() {
+		return payment;
+	}
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 	public Date getDate() {
 		return date;
 	}
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
 	public String getTnsId() {
 		return tnsId;
 	}
