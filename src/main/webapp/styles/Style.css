@@ -208,7 +208,7 @@ span.apiversion
 {
     position: absolute;
     top: 10px;
-    right: 170px;
+    right: 20px;
     width: 45px;
     height: 45px;
     border-radius: 32px;
@@ -249,7 +249,7 @@ span.apiversion
 	/*border-right: 1px solid #ddd;
     border-top: 1px solid #cbcbcb;*/
 	position: absolute;
-	top: 80px;
+	top: 140px;
 	left: 0;
 	margin-bottom: -72px;
     background: #fff;
@@ -295,6 +295,12 @@ span.apiversion
 .lgcolumn_expanded
 {
     margin-right: 0 !important;
+    margin-left: 312px;
+    height: 100%;
+    overflow-y: auto;
+    outline: none;
+    min-width: 400px;
+    
 }
 .lgcolumn_expandedleft
 {
@@ -315,7 +321,7 @@ span.apiversion
     width:  100%; 
     overflow: hidden;
     position: fixed;
-    top: 75px;
+    top: 111px;
 	/*
     bottom: 84px;
 	*/
@@ -332,9 +338,9 @@ span.apiversion
     border: 1px solid #39b54a;
     /* border-left: 1px solid #ddd; */
     position: fixed;
-    top: 80px;
+    top: 132px;
     left: 25%;
-	margin-bottom: -42px;
+	bottom: 100px;
     opacity: .98;
 }
 #SideBar .header
