@@ -22,6 +22,10 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -151,7 +155,7 @@ public class GenerateToken {
 
 	}
 
-	@RequestMapping(value = "/getTransaction", method = RequestMethod.POST)
+	@RequestMapping(value = "/getTransaction", method = RequestMethod.GET)
 //	@ResponseBody
 	public ModelAndView verifyTransaction(HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {
@@ -192,16 +196,19 @@ public class GenerateToken {
 		return songIdList;
 	}
 	
-	@RequestMapping(value = "/download", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
-	public @ResponseBody String getDownloadJson()
+
+	@GET
+	@Path("/getDownloadValidation")
+	@Produces("application/json")
+	public String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId)
 	{
-	 Transaction downloadDao=  transactionDao.getById(PnrID);
-	 String tnsId=downloadDao.getTnsId();
+	Transaction downloadDao=  transactionDao.getById(PnrID);
+	  tnsId=downloadDao.getTnsId();
 	 String approval=downloadDao.getCcDapproval();
-	    return "PnrID="+PnrID+"&tnsId="+tnsId+"&approval="+approval;
+	    return approval;
 	}
 	
-	private void getEmployees()
+	/*private void getEmployees()
 	{
 	    final String uri = "http://localhost:8080/KalimbaWebPlayer/download";
 	     
@@ -214,7 +221,7 @@ public class GenerateToken {
 	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
 	     
 	   
-	}
+	}*/
 	
 	
 	
