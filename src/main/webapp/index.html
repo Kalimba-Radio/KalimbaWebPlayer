@@ -97,12 +97,20 @@
 			 <script>
 			    window.onload = function () { 
 				    			 
-				 var tokenId=get('TransID');
+				 var tokenId=get('tnsId');
 				 var PnrID=get('PnrID');
-				 var CCDapproval=get('CCDapproval');
-				 var CompanyRef=get('CompanyRef');	
-				 if(CCDapproval !==undefined && PnrID !==undefined)
+				// var CCDapproval=get('CCDapproval');
+				// var CompanyRef=get('CompanyRef');	
+				 if(tokenId !==undefined && PnrID !==undefined)
 				 {
+					 $(document).ready(function() {
+						    $.ajax({
+						        url: "http://localhost/KalimbaWebPlayer/REST/Report/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						    }).then(function(data) {
+						       alert(data);
+						    });
+						});
+					 
 					 downloadSong();
 					setTimeout(function(){},200000);
 					saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef);

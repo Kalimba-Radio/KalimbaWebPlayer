@@ -6,6 +6,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Controller;
 
 import com.witl.kalimba.webplayer.common.Payment;
 import com.witl.kalimba.webplayer.common.Transaction;
@@ -13,6 +15,7 @@ import com.witl.kalimba.webplayer.dao.PaymentDao;
 import com.witl.kalimba.webplayer.dao.TransactionDao;
 
 @Path("/Report")
+@ComponentScan({ "com.witl.kalimba.webplayer" })
 public class PlayerWebService {
 	@Autowired
 	private PaymentDao paymentDao;
@@ -32,7 +35,7 @@ public class PlayerWebService {
 	@Produces("application/json")
 	public String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId)
 	{
-		transactionDao = new TransactionDao();
+		//transactionDao = new TransactionDao();
 	Transaction downloadDao=  transactionDao.getById(PnrID);
 	  tnsId=downloadDao.getTnsId();
 	 String approval=downloadDao.getCcDapproval();
