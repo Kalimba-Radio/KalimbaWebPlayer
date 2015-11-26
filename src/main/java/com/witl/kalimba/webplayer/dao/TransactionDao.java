@@ -43,9 +43,9 @@ public class TransactionDao {
 		return (Serializable)sessionFactory.getCurrentSession().save(Transaction);
 	}
 	
-	public void update(Transaction Transaction)
+	public Integer update(Transaction Transaction)
 	{
-		sessionFactory.getCurrentSession().merge(Transaction);
+		 return (Integer) sessionFactory.getCurrentSession().merge(Transaction);
 	}
 	
 	public void delete(String id)

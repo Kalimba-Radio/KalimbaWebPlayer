@@ -11,6 +11,7 @@ import java.io.StringReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -32,10 +33,16 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -58,8 +65,9 @@ public class GenerateToken {
 	private String tokenId;
 	private String listOfSongs;
 	private Payment payment;
+	private String PnrID;
 
-	@RequestMapping(value = "/getToken", method = RequestMethod.GET)
+	@RequestMapping(value = "/getToken", method = RequestMethod.POST)
 	@ResponseBody
 	public String getToken(HttpServletRequest request,
 			HttpServletResponse response, HttpSession session)
@@ -137,6 +145,7 @@ public class GenerateToken {
 		paymentDao.save(payment);
 		List songIdList=getSongList(listOfSongs);
 		System.out.println(songIdList);
+		//getEmployees();
 
 		return tokenId;
 
@@ -152,7 +161,7 @@ public class GenerateToken {
 		
 		String tnsId = request.getParameter("TransID");
 		
-		String PnrID=request.getParameter("PnrID");
+		 PnrID=request.getParameter("PnrID");
 		String CCDapproval=request.getParameter("CCDapproval");
 		String companyRef=request.getParameter("CompanyRef");
 		
@@ -169,7 +178,7 @@ public class GenerateToken {
         transaction.setPayment(payment);
         transactionDao.save(transaction);		
 
-		return new ModelAndView("index");
+		return new ModelAndView("redirect:/?PnrID="+PnrID+"&tnsId="+tnsId);
 
 	}
 	
@@ -183,8 +192,30 @@ public class GenerateToken {
 		return songIdList;
 	}
 	
-
-
-
-
-}
+	@RequestMapping(value = "/download", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
+	public @ResponseBody String getDownloadJson()
+	{
+	 Transaction downloadDao=  transactionDao.getById(PnrID);
+	 String tnsId=downloadDao.getTnsId();
+	 String approval=downloadDao.getCcDapproval();
+	    return "PnrID="+PnrID+"&tnsId="+tnsId+"&approval="+approval;
+	}
+	
+	private void getEmployees()
+	{
+	    final String uri = "http://localhost:8080/KalimbaWebPlayer/download";
+	     
+	    RestTemplate restTemplate = new RestTemplate();
+	     
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	    HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+	     
+	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+	     
+	   
+	}
+	
+	
+	
+	}
