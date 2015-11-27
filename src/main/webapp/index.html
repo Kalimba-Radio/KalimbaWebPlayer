@@ -97,15 +97,26 @@
 			 <script>
 			    window.onload = function () { 
 				    			 
-				 var tokenId=get('TransID');
+				 var tokenId=get('tnsId');
 				 var PnrID=get('PnrID');
 				 var CCDapproval=get('CCDapproval');
 				 var CompanyRef=get('CompanyRef');	
-				 if(CCDapproval !==undefined && PnrID !==undefined)
+				 if(tokenId !==undefined && PnrID !==undefined)
 				 {
-					 downloadSong();
-					setTimeout(function(){},200000);
-					saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef);
+					 $(document).ready(function() {
+						    $.ajax({
+						        url: "http://localhost/KalimbaWebPlayer/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						    }).then(function(data) {
+						       alert(data);
+						       if(data==='success')
+						    	   {
+						    	   downloadSong();
+									setTimeout(function(){},200000);
+						    	   }
+						    });
+						});
+					
+				//	saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef);
 					 }
 				       
 				 				
@@ -136,11 +147,11 @@
 		 });       
          }
 
-function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
+/* function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
 	// document.forms[0].method = 'post';	
 	 document.forms[0].action = 'getTransaction?TransID='+tokenId+'&PnrID='+PnrID+'&CCDapproval='+CCDapproval+'&CompanyRef='+CompanyRef;
 	document.forms[0].submit();	
-}
+} */
 
 		 
 			</script>

@@ -74,13 +74,13 @@ public class UserJDBCTemplate {
    public int validateTransaction(String pnrId, String TrnxToken)
    {
 	
-	String SQLCNT="select count(*) from Transaction where tnsId=? and pnrId=? and isDolwnloaded not like 'YES'";
-	int cnt=jdbcTemplateObject.queryForInt(SQLCNT,pnrId,TrnxToken);
+	String SQLCNT="select count(*) from Transaction where tnsId=? and pnrId=? and isDolwnloaded <> 'YES'";
+	int cnt=jdbcTemplateObject.queryForInt(SQLCNT,TrnxToken,pnrId);
 	System.out.println("cnt======"+cnt);
-	if(cnt<0){
-		String SQL = "update Transaction set isDolwnloaded='YES' where tnsId=? and pnrId=? and isDolwnloaded not like 'YES'";
+	if(cnt>0){
+		String SQL = "update Transaction set isDolwnloaded='YES' where tnsId=? and pnrId=? and isDolwnloaded <> 'YES'";
 	      
-	      jdbcTemplateObject.update( SQL, pnrId,TrnxToken);
+	      jdbcTemplateObject.update( SQL, TrnxToken,pnrId);
 	      //System.out.println("update Record Name = " + user.getName() + " Email = " + user.getEmail());
 	     
 	}
