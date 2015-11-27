@@ -27,36 +27,34 @@ public class PlayerWebService {
 	private Payment payment;
 	private String PnrID;
 
-	
-	
-
 	@GET
 	@Path("/getDownloadValidation")
 	@Produces("application/json")
-	public String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId)
-	{
-		//transactionDao = new TransactionDao();
-	Transaction downloadDao=  transactionDao.getById(PnrID);
-	  tnsId=downloadDao.getTnsId();
-	 String approval=downloadDao.getCcDapproval();
-	    return approval;
+	public String getDownloadValidation(@QueryParam("PnrID") String PnrID,
+			@QueryParam("tnsId") String tnsId) {
+		// transactionDao = new TransactionDao();
+		Transaction downloadDao = transactionDao.getById(PnrID);
+		tnsId = downloadDao.getTnsId();
+		String approval = downloadDao.getCcDapproval();
+		return approval;
 	}
-	
-	/*private void getEmployees()
-	{
-	    final String uri = "http://localhost:8080/KalimbaWebPlayer/download";
-	     
-	    RestTemplate restTemplate = new RestTemplate();
-	     
-	    HttpHeaders headers = new HttpHeaders();
-	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	    HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-	     
-	    ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-	     
-	   
-	}*/
-	
-	
-	
-	}
+
+	/*
+	 * private void getEmployees() { final String uri =
+	 * "http://localhost:8080/KalimbaWebPlayer/download";
+	 * 
+	 * RestTemplate restTemplate = new RestTemplate();
+	 * 
+	 * HttpHeaders headers = new HttpHeaders();
+	 * headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	 * HttpEntity<String> entity = new HttpEntity<String>("parameters",
+	 * headers);
+	 * 
+	 * ResponseEntity<String> result = restTemplate.exchange(uri,
+	 * HttpMethod.POST, entity, String.class);
+	 * 
+	 * 
+	 * }
+	 */
+
+}
