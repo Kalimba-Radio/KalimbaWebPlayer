@@ -25,6 +25,14 @@ public class Transaction {
 	
 	private String ccDapproval;
 	private String companyRef;
+//	@Column(columnDefinition="false")
+	private String isDolwnloaded;
+	public String getIsDolwnloaded() {
+		return isDolwnloaded;
+	}
+	public void setIsDolwnloaded(String isDolwnloaded) {
+		this.isDolwnloaded = isDolwnloaded;
+	}
 	@Column
 	@Type(type="date")
 	private Date date;
