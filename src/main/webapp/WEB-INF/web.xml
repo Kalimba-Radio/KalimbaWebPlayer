@@ -67,6 +67,10 @@
 		<servlet-name>SpringDispatcher</servlet-name>
 		<url-pattern>/getTransaction</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringDispatcher</servlet-name>
+		<url-pattern>/getDownloadValidation</url-pattern>
+	</servlet-mapping>
 	
 	
 	<!-- <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> <url-pattern>/uploadController</url-pattern> 
@@ -88,7 +92,7 @@
 		</init-param> </filter> <filter-mapping> <filter-name>CorsFilter</filter-name> 
 		<url-pattern>/*</url-pattern> </filter-mapping> -->
 
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>ServletAdaptor</servlet-name>
 		<servlet-class>
 			com.sun.jersey.server.impl.container.servlet.ServletAdaptor</servlet-class>
@@ -101,7 +105,7 @@
 	<servlet-mapping>
 		<servlet-name>ServletAdaptor</servlet-name>
 		<url-pattern>/REST/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
