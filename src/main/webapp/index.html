@@ -465,6 +465,10 @@
 				document.forms[0].action = "index.jsp";
 				document.forms[0].submit();
 			}
+			
+			function showCart(id, value) {
+				 $(this).children(".description").show();
+			}
 		</script>
 		<!-- build:js({.,app}) scripts/vendor.min.js -->
 		<!-- bower:js -->
@@ -580,7 +584,7 @@
               </button>
               <h1 class="navbar-brand"><a href="index.html"><img src="images/kalimba_logo-01.png"  alt="Kalimba Radio Free African music streaming"></a></h1>
             </div>
-            <div align="right" class="tiptext cartstyle" style="color: 5B5B4E"
+            <div align="right" class="tiptext cartstyle"  style="color: 5B5B4E"
 					id="testid">
 					<div class="description boxshadow" id="dialogtest">
 						<div id="loginElement"></div>
