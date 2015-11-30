@@ -99,8 +99,8 @@
 				    			 
 				 var tokenId=get('tnsId');
 				 var PnrID=get('PnrID');
-				 var CCDapproval=get('CCDapproval');
-				 var CompanyRef=get('CompanyRef');	
+				// var CCDapproval=get('CCDapproval');
+				// var CompanyRef=get('CompanyRef');	
 				 if(tokenId !==undefined && PnrID !==undefined)
 				 {
 					 $(document).ready(function() {
@@ -110,6 +110,14 @@
 						       alert(data);
 						       if(data==='success')
 						    	   {
+					 $(document).ready(function() {
+						    $.ajax({
+						        url: "http://localhost/KalimbaWebPlayer/REST/Report/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						    }).then(function(data) {
+						       alert(data);
+						    });
+						});
+					 
 						    	   downloadSong();
 									setTimeout(function(){},200000);
 						    	   }
