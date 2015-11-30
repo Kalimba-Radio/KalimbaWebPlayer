@@ -25,6 +25,17 @@ public class Transaction {
 	
 	private String ccDapproval;
 	private String companyRef;
+//	@Column(columnDefinition="false")
+	
+	@Column(name="isDownloaded")
+	private String isDownloaded="NO";
+	
+	public String getIsDownloaded() {
+		return isDownloaded;
+	}
+	public void setIsDownloaded(String isDownloaded) {
+		this.isDownloaded = isDownloaded;
+	}
 	@Column
 	@Type(type="date")
 	private Date date;

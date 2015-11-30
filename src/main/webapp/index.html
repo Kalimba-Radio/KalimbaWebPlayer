@@ -105,15 +105,26 @@
 				 {
 					 $(document).ready(function() {
 						    $.ajax({
+						        url: "http://localhost/KalimbaWebPlayer/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						    }).then(function(data) {
+						       alert(data);
+						       if(data==='success')
+						    	   {
+					 $(document).ready(function() {
+						    $.ajax({
 						        url: "http://localhost/KalimbaWebPlayer/REST/Report/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
 						    }).then(function(data) {
 						       alert(data);
 						    });
 						});
 					 
-					 downloadSong();
-					setTimeout(function(){},200000);
-					saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef);
+						    	   downloadSong();
+									setTimeout(function(){},200000);
+						    	   }
+						    });
+						});
+					
+				//	saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef);
 					 }
 				       
 				 				
@@ -144,11 +155,11 @@
 		 });       
          }
 
-function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
+/* function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
 	// document.forms[0].method = 'post';	
 	 document.forms[0].action = 'getTransaction?TransID='+tokenId+'&PnrID='+PnrID+'&CCDapproval='+CCDapproval+'&CompanyRef='+CompanyRef;
 	document.forms[0].submit();	
-}
+} */
 
 		 
 			</script>
@@ -462,6 +473,10 @@ function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
 				document.forms[0].action = "index.jsp";
 				document.forms[0].submit();
 			}
+			
+			function showCart(id, value) {
+				 $(this).children(".description").show();
+			}
 		</script>
 		<!-- build:js({.,app}) scripts/vendor.min.js -->
 		<!-- bower:js -->
@@ -577,7 +592,7 @@ function saveTranscationDetails(tokenId,PnrID,CCDapproval,CompanyRef){
               </button>
               <h1 class="navbar-brand"><a href="index.html"><img src="images/kalimba_logo-01.png"  alt="Kalimba Radio Free African music streaming"></a></h1>
             </div>
-            <div align="right" class="tiptext cartstyle" style="color: 5B5B4E"
+            <div align="right" class="tiptext cartstyle"  style="color: 5B5B4E"
 					id="testid">
 					<div class="description boxshadow" id="dialogtest">
 						<div id="loginElement"></div>
