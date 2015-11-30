@@ -7,6 +7,8 @@ import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +16,7 @@ import com.witl.kalimba.webplayer.common.Transaction;
 
 @Repository
 @Transactional
+
 public class TransactionDao {
 	@Autowired
 	private SessionFactory sessionFactory;

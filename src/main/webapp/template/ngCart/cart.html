@@ -83,9 +83,9 @@ function show(id, value) {
 
 
 
-<div class="table-responsive col-lg-12"    ng-show="{{ngCart.getTotalItems() >= 0}}" id="template/ngCart/addtocart.html" style="padding-bottom:50px"  >
+<div class="table-responsive col-lg-12"   ng-show="{{ngCart.getTotalItems() >= 0}}" id="template/ngCart/addtocart.html" style="padding-bottom:50px"  >
 
-    <table class="table table-striped ngCart cart table title"  cellspacing="0px" cellpading="50px" style="width: 500px"  >
+    <table class="table table-striped ngCart cart table title"  cellspacing="0px" cellpading="50px" style="width: 450px"  >
 
         <thead >
         <tr style="height: 50px"  >
@@ -113,11 +113,10 @@ function show(id, value) {
             <td style="height: 25px;width: 20px;"></td>
 
             <td align="left">{{ item.getName() }}</td>
-            <td align="left"><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
-                      ng-click="item.setQuantity(-1, true)"></span>
+            <td align="left"><span class="glyphicon" ></span>
                 {{ item.getImg() }}
-                <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
-            <td align="left">{{ item.getPrice() | currency}} </td>
+                <span class="glyphicon" ></span></td>
+            <td align="left"> {{ item.getPrice() | currency}} </td>
             <td><span ng-click="ngCart.removeItemById(item.getId())">Remove</span></td>
             
         </tr>

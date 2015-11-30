@@ -7,20 +7,23 @@ import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.witl.kalimba.webplayer.common.Payment;
 import com.witl.kalimba.webplayer.common.Transaction;
+import com.witl.kalimba.webplayer.common.UserJDBCTemplate;
 import com.witl.kalimba.webplayer.dao.PaymentDao;
 import com.witl.kalimba.webplayer.dao.TransactionDao;
 
-@Path("/Report")
+@RestController
 @ComponentScan({ "com.witl.kalimba.webplayer" })
 public class PlayerWebService {
+	
 	@Autowired
-	private PaymentDao paymentDao;
-	@Autowired
-	private TransactionDao transactionDao;
+	private UserJDBCTemplate userDAO;
 
 	private String tokenId;
 	private String listOfSongs;
@@ -28,15 +31,25 @@ public class PlayerWebService {
 	private String PnrID;
 
 	@GET
-	@Path("/getDownloadValidation")
-	@Produces("application/json")
-	public String getDownloadValidation(@QueryParam("PnrID") String PnrID,
-			@QueryParam("tnsId") String tnsId) {
-		// transactionDao = new TransactionDao();
-		Transaction downloadDao = transactionDao.getById(PnrID);
-		tnsId = downloadDao.getTnsId();
-		String approval = downloadDao.getCcDapproval();
-		return approval;
+	//@Path("/getDownloadValidation")
+	//@Produces("application/json")
+	@RequestMapping("/getDownloadValidation")
+	
+	public @ResponseBody String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId)
+		System.out.println("INside rest controller");
+		//transactionDao = new TransactionDao();
+		int res=userDAO.validateTransaction(PnrID, tnsId);
+		
+		String result="";
+		if(res>0){
+			result="success";
+		}
+		else
+		{
+			result="failure";
+		}
+	 
+	    return result;
 		
 	}
 
