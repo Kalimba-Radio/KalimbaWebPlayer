@@ -35,7 +35,7 @@ public class PlayerWebService {
 	//@Produces("application/json")
 	@RequestMapping("/getDownloadValidation")
 	
-	public @ResponseBody String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId)
+	public @ResponseBody String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId){
 		System.out.println("INside rest controller");
 		//transactionDao = new TransactionDao();
 		int res=userDAO.validateTransaction(PnrID, tnsId);

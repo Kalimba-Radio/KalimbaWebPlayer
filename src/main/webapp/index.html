@@ -106,11 +106,15 @@
 				 {
 					 $(document).ready(function() {
 						    $.ajax({
-						        url: "http://localhost/KalimbaWebPlayer/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						        url: "http://130.211.128.142/KalimbaWebPlayer/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
 						    }).then(function(data) {
 						       alert(data);
 						       if(data==='success')
 						    	   {
+<<<<<<< HEAD
+					 
+=======
+>>>>>>> 31855caf583e3e566b0ab5376ca8ef8e680bb91d
 						    	   downloadSong();
 									setTimeout(function(){},200000);
 						    	   }
@@ -317,12 +321,17 @@
 
 												//document.forms[0].action="/U";
 												var scope = angular
-												.element(document.getElementById("loginElement")).scope();
-												scope.$apply(function() {
-												//	scope.download('465');
-												});
+												.element(
+														document
+																.getElementById("loginElement"))
+												.scope();
+										scope.$apply(function() {
+											scope.saveUser(response);
+											//scope.saveUser(response);
+										});
 
-											});
+											
+						});
 						});
 
 			};
@@ -405,7 +414,7 @@
 									var scope = angular
 											.element(
 													document
-															.getElementById("template/ngCart/addtocart.html"))
+															.getElementById("loginElement"))
 											.scope();
 									scope.$apply(function() {
 										scope.saveUser(response);

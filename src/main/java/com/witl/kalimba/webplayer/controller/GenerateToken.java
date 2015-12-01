@@ -71,27 +71,35 @@ public class GenerateToken {
 	private Payment payment;
 	private String PnrID;
 
-	@RequestMapping(value = "/getToken", method = RequestMethod.POST)
+	@RequestMapping(value = "/getToken", method = RequestMethod.GET)
 	@ResponseBody
 	public String getToken(HttpServletRequest request,
 			HttpServletResponse response, HttpSession session)
 			throws SAXException, IOException, ParserConfigurationException,
 			URISyntaxException {
-
-		String items = (String) request.getParameter("itemsdetails");
-		System.out.println(request.getParameter("email"));
-		String email=request.getParameter("email");
+		String items="",email="", price="";
+		
+		if(request.getParameter("itemsdetails")!=null){
+		items = (String) request.getParameter("itemsdetails");
+		}
+		
+		if(request.getParameter("email")!=null){
+		email=request.getParameter("email");
+		}
+		
 		listOfSongs = items;
 
-		System.out.println(request.getParameter("totalPrice"));
-		String price = request.getParameter("totalPrice");
+		//System.out.println(request.getParameter("totalPrice"));
+		if(request.getParameter("totalPrice")!=null){
+		 price = request.getParameter("totalPrice");
+		}
 		float pricefloat = Float.parseFloat(price);
 		pricefloat = (float) Math.floor(pricefloat * 100) / 100;
 		String newprice = Float.toString(pricefloat);
 		System.out.println(pricefloat);
 	   
-		request.getParameter("");
-		request.getParameter("");
+		/*request.getParameter("");
+		request.getParameter("");*/
 
 		// http cleient call
 		String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
@@ -102,9 +110,9 @@ public class GenerateToken {
 				+ "<PaymentAmount>"
 				+ newprice
 				+ "</PaymentAmount>"
-				+ "<PaymentCurrency>ZMK</PaymentCurrency>"
+				+ "<PaymentCurrency>USD</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>http://localhost:8080/KalimbaWebPlayer/getTransaction</RedirectURL>"
+				+ "<RedirectURL>http://130.211.128.142/KalimbaWebPlayer/getTransaction</RedirectURL>"
 				+ "<BackURL>www.kalimbaradio.com</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
