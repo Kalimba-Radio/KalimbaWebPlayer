@@ -61,6 +61,7 @@
 	z-index: 1000;
 	display: none;
 }
+.loading { border:1px solid #ddd; padding:20px; margin:40px 5px; width:80px;}
 
 .boxshadow {
 	-moz-box-shadow: 3px 3px 5px #535353;
@@ -110,14 +111,6 @@
 						       alert(data);
 						       if(data==='success')
 						    	   {
-					 $(document).ready(function() {
-						    $.ajax({
-						        url: "http://localhost/KalimbaWebPlayer/REST/Report/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
-						    }).then(function(data) {
-						       alert(data);
-						    });
-						});
-					 
 						    	   downloadSong();
 									setTimeout(function(){},200000);
 						    	   }
@@ -602,6 +595,9 @@
 					<ngcart-summary></ngcart-summary>
 
 				</div>
+				<div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" src="images/ajax_loader_gray_128.gif" style="width:128px;height:128px;margin-top:15%;" alt="Loading"/>
+</div>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul id="navigation" class="nav navbar-nav navbar-right">
                  <li><fb:login-button id="sslogo" size="medium" scope="email"

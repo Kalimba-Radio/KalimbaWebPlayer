@@ -412,14 +412,7 @@ angular.module('ngCart', ['ngCart.directives'])
     		}).then(function successCallback(response) {
     			console.log(response);
     			var token = response.data;
-    			$scope.token=token;
-    			
-    			
     		
-
-    			      //  $location.path("www.google.com");
-    			       
-    			//$location.path()==('www.google.com');
     			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
     		    
     		  }, function errorCallback(erresponse) {
@@ -434,11 +427,7 @@ angular.module('ngCart', ['ngCart.directives'])
         	manageCartUI();
         });
         
-       // document.getElementById("myDIV").addEventListener("mousemove", myFunction);
-
-     // Remove the event handler from <div>
-     //document.getElementById("myDIV").removeEventListener("mousemove", myFunction);
-        
+    
         
         
         manageCartUI();
