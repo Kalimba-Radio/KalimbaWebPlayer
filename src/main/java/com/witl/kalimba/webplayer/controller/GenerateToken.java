@@ -113,7 +113,7 @@ public class GenerateToken {
 				+ "<PaymentCurrency>USD</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
 				+ "<RedirectURL>http://130.211.128.142/KalimbaWebPlayer/getTransaction</RedirectURL>"
-				+ "<BackURL>www.kalimbaradio.com</BackURL>"
+				+ "<BackURL>http://130.211.128.142/KalimbaWebPlayer</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
 				+ "</Transaction>"

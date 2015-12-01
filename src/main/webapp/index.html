@@ -111,10 +111,6 @@
 						       alert(data);
 						       if(data==='success')
 						    	   {
-<<<<<<< HEAD
-					 
-=======
->>>>>>> 31855caf583e3e566b0ab5376ca8ef8e680bb91d
 						    	   downloadSong();
 									setTimeout(function(){},200000);
 						    	   }
@@ -167,7 +163,7 @@
 					return;
 				js = d.createElement(s);
 				js.id = id;
-				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=441961949344689";
+				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=441661862708031";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
@@ -233,6 +229,7 @@
 				}
 			}
 
+			
 			window.fbAsyncInit = function() {
 				FB.init({
 					appId : '441661862708031',
@@ -257,14 +254,14 @@
 				//alert("check param" + userType);
 				FB
 						.getLoginStatus(function(response) {
-							//var var1=$scope.var1;
-							var sessionMail = document.forms[0].sessionEmail.value;
-							//var userType = document.forms[0].userType.value;
-							//if (sessionMail != "") {
+							if (response.status === 'connected') {
+							
 							FB
 									.api(
 											"/me/picture?width=55&height=55",
 											function(response) {
+												
+												
 
 												console.log("url"
 														+ response.data.url);
@@ -280,43 +277,33 @@
 												console.log("the end");
 
 												//document.forms[0].action="/U";
+												
 
 											});
 
-							if (response.status === 'connected') {
-								// Logged into your app and Facebook.
-								//document.getElementById('ssname').style.display = "block";
-								//document.getElementById('ssname').innerHTML = response.name;
-								//	callServlet();
-								//testAPI('U');
-								/* if(sessionMail==""){
-									
-									FB.logout(function(response) {
-										//document.location.reload();
-										document.forms[0].killSession.value = "Y";
-										document.forms[0].action = "index.jsp";
-										document.forms[0].submit();
-									});
-								} */
-							}
+							}			
 
 						});
 
 				FB
 						.getLoginStatus(function(response) {
+							
+							if (response.status === 'connected') {
 							FB
 									.api(
 											'/me',
 											function(response) {
+												
+												
 
-												//console.log(response.data.url);
+											//	console.log(response.data.url);
 
-												if (typeof response.name != 'undefined') {
+												 if (typeof response.name != 'undefined') {
 													document
 															.getElementById('ssname').style.display = "block";
 													document
 															.getElementById('ssname').innerHTML = response.first_name;
-												}
+												} 
 												console.log("the end");
 
 												//document.forms[0].action="/U";
@@ -330,8 +317,11 @@
 											//scope.saveUser(response);
 										});
 
+												
 											
-						});
+								}	);
+									
+							}
 						});
 
 			};
@@ -410,7 +400,9 @@
 									document.forms[0].providerId.value = "1";
 									document.forms[0].sessionEmail.value = response.email;
 									//response.id;
-
+									document.getElementById('ssname').style.display = "block";
+									document.getElementById('ssname').innerHTML = response.first_name;
+									
 									var scope = angular
 											.element(
 													document
@@ -441,7 +433,7 @@
 					document.forms[0].action = 'saveUser';
 
 					document.forms[0].submit();
-					//	}
+					
 
 				}
 			}
@@ -609,8 +601,9 @@
 </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul id="navigation" class="nav navbar-nav navbar-right">
-                 <li><fb:login-button id="sslogo" size="medium" scope="email"
-					onlogin="checkLoginState('U');"></fb:login-button></li>
+                 <li style="width: 55px;top: 3px;"><fb:login-button id="sslogo" size="medium" scope="email"
+					onlogin="checkLoginState('U');"></fb:login-button>
+					<div id="ssname" href=""></div></li>
                  <li><a href="#header">Submit Content</a></li>
                 <li><a href="http://blog.kalimbaradio.com">Blog</a></li>
                 <li><a href="contact.html">Contact Us &nbsp;&nbsp;</a></li>

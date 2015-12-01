@@ -452,7 +452,7 @@ angular.module('JamStash')
     	$rootScope.user.name = response.name;
     	$rootScope.user.id = response.id;
 		//alert(globals.user.name);
-    	if(typeof response.email ==='undefined' || response.email ===''){
+    	if((typeof response.email ==='undefined' || response.email ===null)&&typeof response.email !=='undefined'){
     		
     		$rootScope.user.email = response.id+"@facebook.com";
         }else{
