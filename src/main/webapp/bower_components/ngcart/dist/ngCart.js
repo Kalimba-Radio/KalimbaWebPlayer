@@ -392,8 +392,16 @@ angular.module('ngCart', ['ngCart.directives'])
         };
         
      $scope.sendToken = function(){
-    	 alert( $rootScope.user.name);
-    	 alert( $rootScope.user.email+","+$rootScope.user.id);
+    	 /*alert( $rootScope.user.name);*/
+    	 /*alert( $rootScope.user.email);*/
+    	 if($rootScope.user.email==undefined||$rootScope.user.email==''||$rootScope.user.email==null)
+    		 {
+    		 alert("Please Login to continue");
+    		 $('#spinner').hide();
+    		 return false;
+    		 
+    		 }
+    	 
     	 var email=$rootScope.user.email;
     	var total = $scope.ngCart.totalCost();
     //	var each= $scope.ngCart.getTotalItems();

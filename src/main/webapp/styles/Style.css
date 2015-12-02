@@ -189,7 +189,7 @@ span.apiversion
     height: 20px;
     opacity: .8;
 }
-#ssname
+/* #ssname
 {
     position: absolute;
     top: 25px;
@@ -201,10 +201,27 @@ span.apiversion
     font-variant: small-caps;
     color: #6B6B6B;
     font-size: 15px;
-    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
+    background: url('../images/facebook_icon.png') no-repeat 5px 3px;   
     cursor: pointer;
+} */
+
+#ssname {
+    position: fixed;
+    /* top: 75px; */
+    /* right: 35px; */
+    /* width: 55px; */
+    /* height: 30px; */
+    border-radius: 32px;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #6B6B6B;
+    font-size: 15px;
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px; */
+    cursor: pointer;
+    text-align: center;
 }
-#sslogo
+
+/* #sslogo
 {
     position: absolute;
     top: 10px;
@@ -212,8 +229,23 @@ span.apiversion
     width: 45px;
     height: 45px;
     border-radius: 32px;
-    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
+    background: url('../images/facebook_icon.png') no-repeat 5px 3px;   
     cursor: pointer;
+} */
+
+#sslogo {
+    /* position: absolute; */
+    /* top: 10px; */
+    /* right: 20px; */
+    width: 35px;
+    /* height: 45px; */
+    border-radius: 32px;
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px; */
+    cursor: pointer;
+}
+<style>…</style>.fb_iframe_widget {
+    display: inline-block;
+    position: relative;
 }
 #sslogo:hover
 {

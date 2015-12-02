@@ -6112,7 +6112,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 		padding-bottom: 15px
 	}
 	.navbar-nav.navbar-right:last-child {
-		margin-right: -15px
+		margin-right: 5px
 	}
 }
 
