@@ -100,7 +100,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     Properties hibernateProperties() {
        return new Properties() {
           {
-             setProperty("hibernate.hbm2ddl.auto", "create");
+             setProperty("hibernate.hbm2ddl.auto", "update");
              setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
              setProperty("hibernate.globally_quoted_identifiers", "true");
              setProperty("hibernate.show_sql", "true");
