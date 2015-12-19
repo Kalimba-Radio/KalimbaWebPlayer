@@ -106,7 +106,7 @@
 				 {
 					 $(document).ready(function() {
 						    $.ajax({
-						        url: "http://130.211.128.142/KalimbaWebPlayer/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						        url: "http://www.kalimbaradio.com/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
 						    }).then(function(data) {
 						       alert(data);
 						       if(data==='success')
@@ -163,7 +163,7 @@
 					return;
 				js = d.createElement(s);
 				js.id = id;
-				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0&appId=441661862708031";
+				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0&appId=257684847772401";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
@@ -232,7 +232,7 @@
 			
 			window.fbAsyncInit = function() {
 				FB.init({
-					appId : '441661862708031',
+					appId : '257684847772401',
 					cookie : true, // enable cookies to allow the server to access 
 					// the session
 					xfbml : true, // parse social plugins on this page
